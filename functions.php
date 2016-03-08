@@ -137,6 +137,61 @@ function superkreativ_modify_embed_html( $html ) {
     return '<div class="video-container">'.str_replace(' allowfullscreen','',str_replace(' frameborder="0"','',$html)).'</div>';
 }
 
+/*
+* Prepare a metabox in the menues section for Custom Post Types Archives
+*/
+function superkreativ_add_cpt_archives_menu() {
+	add_meta_box('wpclean-metabox-nav-menu-posttype', __('CPT Kategorier','superkreativ'), 'superkreativ_list_cpt_archive_items', 'nav-menus', 'side', 'default');
+}
+
+/*
+* Get and print out all CPT archives as menu items in menues section
+*/
+function superkreativ_list_cpt_archive_items(){
+	$post_types = get_post_types(array('show_in_nav_menus' => true, 'has_archive' => true), 'object');
+
+	if($post_types) :
+		$items = array();
+		$loop_index = 999999;
+	
+		foreach($post_types as $post_type) {
+			$item = new stdClass();
+			$loop_index++;
+	
+			$item->object_id = $loop_index;
+			$item->db_id = 0;
+			$item->object = 'post_type_'.$post_type->query_var;
+			$item->menu_item_parent = 0;
+			$item->type = 'custom';
+			$item->title = $post_type->labels->name;
+			$item->url = get_post_type_archive_link($post_type->query_var);
+			$item->target = '';
+			$item->attr_title = '';
+			$item->classes = array();
+			$item->xfn = '';
+	
+			$items[] = $item;
+		}
+
+    	$walker = new Walker_Nav_Menu_Checklist(array());
+
+		echo '<div id="posttype-archive" class="posttypediv">
+				<div id="tabs-panel-posttype-archive" class="tabs-panel tabs-panel-active">
+					<ul id="posttype-archive-checklist" class="categorychecklist form-no-clear">'.
+						walk_nav_menu_tree(array_map('wp_setup_nav_menu_item', $items), 0, (object) array('walker' => $walker)).'
+					</ul>
+				</div>
+			  </div>
+			  <p class="button-controls">
+			  	<span class="add-to-menu">
+					<input type="submit"'.disabled(1, 0).' class="button-secondary submit-add-to-menu right" value="'.__('Lägg till i meny', 'superkreativ').'" name="add-posttype-archive-menu-item" id="submit-posttype-archive" />
+					<span class="spinner"></span>
+				</span>
+			  </p>';
+
+	endif;
+}
+
 /**
 * Include Post Types
 */
@@ -159,6 +214,7 @@ add_action('after_setup_theme', 'superkreativ_setup');
 add_action('wp_enqueue_scripts', 'superkreativ_scripts');
 add_action('wp_dashboard_setup', 'superkreativ_add_dashboard_widgets');
 add_action('widgets_init', 'superkreativ_widgets_init');
+add_action('admin_head-nav-menus.php', 'superkreativ_add_cpt_archives_menu');
 
 // Add filters
 add_filter('login_headerurl', 'superkreativ_login_logo_url');
