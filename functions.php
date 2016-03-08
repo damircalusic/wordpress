@@ -103,7 +103,7 @@ function superkreativ_add_dashboard_widgets(){
 	add_meta_box('superkreativ_support',__('Support','superkreativ'),'superkreativ_support_function','dashboard','column3','high');
 	
 	// Column 4
-	//add_meta_box('suprkreativ_fyra',__('Fyra','superkreativ'),'student_dashboard_widget_annonsmarknad_func','dashboard','column4','high');			
+	//add_meta_box('superkreativ_fyra',__('Fyra','superkreativ'),'superkreativ_fyra_func','dashboard','column4','high');			
 }
 
 /**
