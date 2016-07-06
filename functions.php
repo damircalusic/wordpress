@@ -51,8 +51,9 @@ function superkreativ_widgets_init() {
 	global $wp_widget_factory;
 	
 	remove_action('wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
-
-	require(get_template_directory() . '/inc/sidebars.php');
+	
+	require(get_template_directory().'/inc/widgets.php');
+	require(get_template_directory().'/inc/sidebars.php');
 }
 
 /**
@@ -86,7 +87,7 @@ function superkreativ_remove_script_version($src){
 	$base = explode('//', $src);
 	$query = explode('?', $base[1]);
 	
-	return $url.$query[0];
+	return (!empty($src) && !empty($base)) ? $url.(($query[0] == 'fonts.googleapis.com/css') ? $query[0].'?'.$query[1] : $query[0]) : $src;
 }
 
 /**
@@ -415,8 +416,10 @@ add_shortcode('phone', 'superkreativ_phone_spam_ready');
 add_filter('login_headerurl', 'superkreativ_login_logo_url');
 add_filter('login_headertitle', 'superkreativ_login_logo_url_title');
 add_filter('wpseo_metabox_prio', 'superkreativ_yoast_to_bottom');
-add_filter('script_loader_tag', 'superkreativ_remove_script_tag', 15, 1);
-add_filter('script_loader_src', 'superkreativ_remove_script_version', 15, 1);
-add_filter('style_loader_src', 'superkreativ_remove_script_version', 15, 1);
+if(!is_admin()){
+	add_filter('script_loader_tag', 'superkreativ_remove_script_tag', 15, 1);
+	add_filter('script_loader_src', 'superkreativ_remove_script_version', 15, 1);
+	add_filter('style_loader_src', 'superkreativ_remove_script_version', 15, 1);
+}
 add_filter('embed_defaults', 'superkreativ_modify_embed_defaults');
 add_filter('embed_oembed_html', 'superkreativ_modify_embed_html', 10, 3);
