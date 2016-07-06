@@ -386,17 +386,12 @@ function superkreativ_get_instagram_feed(){
 /**
 * Include Post Types
 */
-require (get_template_directory() . '/inc/post-types.php');
+require (get_template_directory().'/inc/post-types.php');
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Custom functions that act independently of the theme templates.
- */
-require get_template_directory() . '/inc/extras.php';
+/*
+* Register WooCommerce Snippets
+*/
+require (get_template_directory().'/inc/woocommerce-snippets.php');
 
 
 // Add actions
