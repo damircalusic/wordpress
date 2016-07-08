@@ -70,6 +70,10 @@ function superkreativ_scripts() {
 	wp_enqueue_style('superkreativ-style', get_stylesheet_uri());
     	wp_enqueue_script('jquery');
 	wp_enqueue_script('superkreativ-script', get_template_directory_uri() . '/js/superkreativ.js', array(), '', true);
+	
+	// Dequeue Scripts and Styles
+	wp_dequeue_style('boxes');
+	wp_dequeue_style('yoast-seo-adminbar');
 }
 /**
  * Remove type='text/javascript' from scripts
