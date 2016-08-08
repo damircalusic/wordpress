@@ -96,6 +96,13 @@ function superkreativ_remove_script_version($src){
 }
 
 /**
+* Remove pages from admin menues
+*/
+function superkreativ_remove_menus(){
+	remove_menu_page('edit-comments.php');
+}
+
+/**
 * Add widgets on WordPress Panel
 */
 function superkreativ_add_dashboard_widgets(){
@@ -403,6 +410,7 @@ require (get_template_directory().'/inc/woocommerce-snippets.php');
 add_action('login_enqueue_scripts', 'superkreativ_login_logo');
 add_action('after_setup_theme', 'superkreativ_setup');
 add_action('wp_enqueue_scripts', 'superkreativ_scripts');
+add_action('admin_menu', 'superkreativ_remove_menus');
 add_action('wp_dashboard_setup', 'superkreativ_add_dashboard_widgets');
 add_action('widgets_init', 'superkreativ_widgets_init');
 add_action('admin_head-nav-menus.php', 'superkreativ_add_cpt_archives_menu');
