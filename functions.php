@@ -233,8 +233,22 @@ function superkreativ_search_filter($query) {
 		if($query->is_search) {
 			$query->set('post_type', array( 'post' ) );
 			//$query->set('posts_per_page', '9999');
+			//$query->set('suppress_filters', FALSE);
 		}
 	}
+}
+
+/*
+* Make all post types searchable with post_title
+*/
+function superkreativ_posts_where( $where, &$wp_query ){
+	global $wpdb;
+	
+	if($wp_query->is_search == 1){
+		$where .= ' OR '.$wpdb->posts.'.post_title LIKE \'%'.esc_sql($wpdb->esc_like($_GET['s'])).'%\''; 
+	}
+	
+	return $where;
 }
 
 /*
@@ -431,3 +445,4 @@ if(!is_admin()){
 }
 add_filter('embed_defaults', 'superkreativ_modify_embed_defaults');
 add_filter('embed_oembed_html', 'superkreativ_modify_embed_html', 10, 3);
+add_filter('posts_where', 'superkreativ_posts_where', 11, 2);
