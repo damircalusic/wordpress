@@ -206,6 +206,16 @@ function superkreativ_list_cpt_archive_items(){
 }
 
 /*
+* Get current Taxonomy ID
+*/
+function superkreativ_get_taxonomi_id(){
+	$queried_object = get_queried_object();
+	$term_id = (empty($queried_object->term_id) ? '' : $queried_object->term_id);
+	
+	return $term_id;
+}
+
+/*
 * Get current Taxonomy Name
 */
 function superkreativ_get_taxonomi_name(){
@@ -223,6 +233,16 @@ function superkreativ_get_taxonomi_slug(){
 	$term_slug = (empty($queried_object->slug) ? '' : $queried_object->slug);
 	
 	return $term_slug;
+}
+
+/*
+* Get current Taxonomy Description
+*/
+function superkreativ_get_taxonomi_desc(){
+	$queried_object = get_queried_object();
+	$term_desc = (empty($queried_object->description) ? '' : '<p id="tax-description">'.$queried_object->description.'</p>');
+	
+	return $term_desc;
 }
 
 /*
@@ -265,6 +285,15 @@ function superkreativ_email_spam_ready($atts, $content = "") {
 */ 
 function superkreativ_phone_spam_ready($atts, $content = "") {
 	return '<a href="tel:'.antispambot($content).'">'.antispambot($content).'</a>';
+}
+
+/*
+* Allways PLAIN text on ctrl + v in EDITOR
+*/
+function superkreativ_tinymce_paste_as_text( $init ) {
+    $init['paste_as_text'] = true;
+
+    return $init;
 }
 
 /*
@@ -446,3 +475,4 @@ if(!is_admin()){
 add_filter('embed_defaults', 'superkreativ_modify_embed_defaults');
 add_filter('embed_oembed_html', 'superkreativ_modify_embed_html', 10, 3);
 add_filter('posts_where', 'superkreativ_posts_where', 11, 2);
+add_filter('tiny_mce_before_init', 'superkreativ_tinymce_paste_as_text');
