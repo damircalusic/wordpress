@@ -196,6 +196,29 @@ function superkreativ_save_cpt_desc(){
 }
 
 /*
+* Display custom post type archive description with Yoast SEO
+*/
+function superkreativ_post_type_archive_seo_description($seo_desc){
+	$post_type = get_post_type();
+	$post_types = get_post_types(
+			array(
+				'public' => true,
+				'_builtin' => false
+			)
+		  );
+	
+	if(in_array($post_type, $post_types)){
+		$description = get_option('superkreativ_cpt_description-'.$post_type);
+		
+		if($description){
+			$seo_desc = substr($description, 0, 150);
+		}
+	}
+	
+	return $seo_desc;
+}
+
+/*
 * Set posts per page for CPT's
 */
 function superkreativ_set_posts_per_page_cpts($query){
@@ -272,3 +295,4 @@ add_action('wp_ajax_nopriv_superkreativ_save_cpt_desc', 'superkreativ_save_cpt_d
 
 // Add Filters
 add_filter('post_updated_messages', 'superkreativ_post_uppdated_messages');
+add_filter('wpseo_metadesc', 'superkreativ_post_type_archive_seo_description', 10, 1);
