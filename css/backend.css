@@ -7,9 +7,9 @@ body.swal2-in{overflow-y:hidden}.swal2-container{display:-webkit-box;display:-ms
 #cpt-desc-form p{
 	max-width:300px;
 }
-#skurs-cpt-title, #skurs-cpt-description{
+#superkreativ-cpt-title, #superkreativ-cpt-description{
 	width:300px;
 }
-#skurs-cpt-description{
+#superkreativ-cpt-description{
 	height:200px;
 }
