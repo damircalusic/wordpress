@@ -13,9 +13,8 @@ jQuery(document).ready(function($){
 		if(title == '' || description == ''){ 
 			swal({
 				title: 'Ursäkta',
-				text: '<strong>Titel</strong> och <strong>Beskrivning</strong> är ett måste.',
 				type: 'warning',   
-				html: true 
+				html: '<strong>Titel</strong> och <strong>Beskrivning</strong> är ett måste.'
 			});
 		}
 		else{ 
@@ -29,9 +28,8 @@ jQuery(document).ready(function($){
 			$.post(ajaxurl, data, function(response){
 				swal({
 					title: 'Kanon',
-					text: 'Allt gick perfekt!',
 					type: 'success',   
-					html: true 
+					html: 'Allt gick perfekt!'
 				});
 			});
 		}
