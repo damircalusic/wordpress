@@ -57,7 +57,7 @@ function superkreativ_widgets_init() {
 }
 
 /**
- * Enqueue scripts and styles.
+ * Frontend scripts and styles
  */
 function superkreativ_scripts() {
 	// Deregister Scripts and Styles
@@ -67,15 +67,24 @@ function superkreativ_scripts() {
 	wp_register_script('jquery', includes_url('/js/jquery/jquery.js'), false, '', true);
 	
 	// Enqueue Scripts and Styles
-	wp_enqueue_style('superkreativ-style', get_stylesheet_uri());
+	wp_enqueue_style('kroauth-style', get_stylesheet_uri());
     	wp_enqueue_script('jquery');
-	wp_enqueue_script('superkreativ-script', get_template_directory_uri() . '/js/superkreativ.js', array(), '', true);
+	wp_enqueue_script('kroauth-script', get_template_directory_uri() . '/js/kroauth.js', array(), '', true);
 	
 	// Dequeue Scripts and Styles
 	wp_dequeue_style('validate-engine-css');
 	wp_dequeue_style('boxes');
 	wp_dequeue_style('yoast-seo-adminbar');
 }
+
+/**
+ * Backend scripts and styles
+ */
+function superkreativ_backend_scripts() {
+	echo "<link type='text/css' rel='stylesheet' href='".get_stylesheet_directory_uri()."/css/backend.css' />\n";
+	echo "<script src='".get_stylesheet_directory_uri()."/js/backend.js'></script>\n";
+}
+
 /**
  * Remove type='text/javascript' from scripts
  */
@@ -453,6 +462,7 @@ require (get_template_directory().'/inc/woocommerce-snippets.php');
 add_action('login_enqueue_scripts', 'superkreativ_login_logo');
 add_action('after_setup_theme', 'superkreativ_setup');
 add_action('wp_enqueue_scripts', 'superkreativ_scripts');
+add_action('admin_head', 'superkreativ_backend_scripts');
 add_action('admin_menu', 'superkreativ_remove_menus');
 add_action('wp_dashboard_setup', 'superkreativ_add_dashboard_widgets');
 add_action('widgets_init', 'superkreativ_widgets_init');
