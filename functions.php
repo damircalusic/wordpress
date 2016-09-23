@@ -52,8 +52,8 @@ function superkreativ_widgets_init() {
 	
 	remove_action('wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
 	
-	require(get_template_directory().'/inc/widgets.php');
-	require(get_template_directory().'/inc/sidebars.php');
+	require(get_template_directory().'/includes/widgets.php');
+	require(get_template_directory().'/includes/sidebars.php');
 }
 
 /**
@@ -69,7 +69,7 @@ function superkreativ_scripts() {
 	// Enqueue Scripts and Styles
 	wp_enqueue_style('kroauth-style', get_stylesheet_uri());
     	wp_enqueue_script('jquery');
-	wp_enqueue_script('kroauth-script', get_template_directory_uri() . '/js/kroauth.js', array(), '', true);
+	wp_enqueue_script('superkreativ-script', get_template_directory_uri() . '/js/superkreativ.js', array(), '', true);
 	
 	// Dequeue Scripts and Styles
 	wp_dequeue_style('validate-engine-css');
@@ -450,12 +450,12 @@ function superkreativ_get_instagram_feed(){
 /**
 * Include Post Types
 */
-require (get_template_directory().'/inc/post-types.php');
+require (get_template_directory().'/includes/post-types.php');
 
 /*
 * Register WooCommerce Snippets
 */
-require (get_template_directory().'/inc/woocommerce-snippets.php');
+require (get_template_directory().'/includes/woocommerce-snippets.php');
 
 
 // Add actions
