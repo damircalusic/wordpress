@@ -457,6 +457,10 @@ require (get_template_directory().'/includes/post-types.php');
 */
 require (get_template_directory().'/includes/woocommerce-snippets.php');
 
+// Remove actions
+remove_action('wp_head', 'rest_output_link_wp_head');
+remove_action('wp_head', 'wp_oembed_add_discovery_links');
+remove_action('template_redirect', 'rest_output_link_header', 11, 0);
 
 // Add actions
 add_action('login_enqueue_scripts', 'superkreativ_login_logo');
