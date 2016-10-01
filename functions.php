@@ -62,6 +62,9 @@ function superkreativ_widgets_init() {
 function superkreativ_scripts() {
 	// Deregister Scripts and Styles
 	wp_deregister_script('jquery');
+	if(!is_admin()){
+		wp_deregister_script('wp-embed');
+	}
 	
 	// Register Scripts and Styles
 	wp_register_script('jquery', includes_url('/js/jquery/jquery.js'), false, '', true);
