@@ -9,7 +9,10 @@ if(!function_exists('superkreativ_setup')) :
 		add_theme_support('title-tag');
 		add_theme_support('post-thumbnails');
 		add_theme_support('html5', array('search-form','gallery','caption',));
-		//add_theme_support('woocommerce');
+		
+		if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))){
+			add_theme_support('woocommerce');
+		}
 		
 		/*add_image_size('leverans-medium', 580, 400, array('center', 'center'));
 		add_image_size('leverans-big', 1200, 9999);
@@ -458,7 +461,9 @@ require (get_template_directory().'/includes/post-types.php');
 /*
 * Register WooCommerce Snippets
 */
-require (get_template_directory().'/includes/woocommerce-snippets.php');
+if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))){
+	require (get_template_directory().'/inc/woocommerce-snippets.php');
+}
 
 // Remove actions
 remove_action('wp_head', 'rest_output_link_wp_head');
