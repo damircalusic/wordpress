@@ -75,7 +75,7 @@ function superkreativ_scripts() {
 	// Enqueue Scripts and Styles
 	wp_enqueue_style('kroauth-style', get_stylesheet_uri());
     	wp_enqueue_script('jquery');
-	wp_enqueue_script('superkreativ-script', get_template_directory_uri() . '/js/superkreativ.js', array(), '', true);
+	wp_enqueue_script('superkreativ-script', get_template_directory_uri() . '/js/frontend.js', array(), '', true);
 	
 	// Dequeue Scripts and Styles
 	wp_dequeue_style('validate-engine-css');
