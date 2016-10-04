@@ -1,10 +1,10 @@
 <?php 
 if ( !defined('ABSPATH')){ exit; }
 
-class KontaktOppetider extends WP_Widget{
-    function KontaktOppetider() {
-        $widget_ops = array( 'classname' => 'kontakt_widget', 'description' => __('Put your contact info here.', 'superkreativ') );
-        parent::__construct( 'kontaktoppetider', __('Contact &amp; Opening hours', 'superkreativ'), $widget_ops );
+class ContactOpeningHours extends WP_Widget{
+    function ContactOpeningHours() {
+        $widget_ops = array( 'classname' => 'kontakt_widget', 'description' => __('Lägg din kontaktinformation här.', 'superkreativ') );
+        parent::__construct( 'ContactOpeningHours', __('Kontakt &amp; Öppetider', 'superkreativ'), $widget_ops );
     }
     
 	function widget($args, $instance){
@@ -42,16 +42,16 @@ class KontaktOppetider extends WP_Widget{
 					'</div>
 				</div>
 				<div class="contactinfo">
-					<p>'.__('Contact information', 'superkreativ').'</p>'.
+					<p>'.__('Kontakt information', 'superkreativ').'</p>'.
 					((empty($phone)) ? '' : '<p>'.__('Tel', 'superkreativ').': <a href="tel:'.antispambot($phone).'"><span class="phone" itemprop="telephone">'.antispambot($phone).'</span></a></p>').
 					((empty($fax)) ? '' : '<p>'.__('Fax', 'superkreativ').': <span class="fax" itemprop="faxNumber">'.antispambot($fax).'</span></p>').
 					((empty($email)) ? '' : '<p>'.__('Email', 'superkreativ').': <a href="mailto:'.antispambot($email).'"><span class="email" itemprop="email">'.antispambot($email).'</span></a></p>').	
 				'</div>
 				 <div class="openinginfo">
-					<p>'.__('Opening hours', 'superkreativ').'</p>'.
-					((empty($monfri)) ? '' : '<p><time itemprop="openingHours" datetime="'.__('Mo-Fr', 'superkreativ').' '.$monfri.'">'.__('Monday-Friday', 'superkreativ').' '.$monfri.'</time></p>').
-					((empty($sat)) ? '' : '<p><time itemprop="openingHours" datetime="'.__('Sa', 'superkreativ').' '.$sat.'">'.__('Saturday', 'superkreativ').' '.$sat.'</time></p>').
-					((empty($sun)) ? '' : '<p><time itemprop="openingHours" datetime="'.__('Su', 'superkreativ').' '.$sun.'">'.__('Sunday', 'superkreativ').' '.$sun.'</time></p>').
+					<p>'.__('Öppetider', 'superkreativ').'</p>'.
+					((empty($monfri)) ? '' : '<p><time itemprop="openingHours" datetime="'.__('Mo-Fr', 'superkreativ').' '.$monfri.'">'.__('Måndag-Fredag', 'superkreativ').' '.$monfri.'</time></p>').
+					((empty($sat)) ? '' : '<p><time itemprop="openingHours" datetime="'.__('Sa', 'superkreativ').' '.$sat.'">'.__('Lördag', 'superkreativ').' '.$sat.'</time></p>').
+					((empty($sun)) ? '' : '<p><time itemprop="openingHours" datetime="'.__('Su', 'superkreativ').' '.$sun.'">'.__('Söndag', 'superkreativ').' '.$sun.'</time></p>').
 					((empty($free_text)) ? '' : '<p>'.$free_text.'</p>').
 				'</div>'.
 			  '</div>';
@@ -106,27 +106,27 @@ class KontaktOppetider extends WP_Widget{
 		$hours = array('01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00','00:00');
 		?>
         <p>
-        	<strong><?php echo __('Title', 'superkreativ'); ?>:</strong>
+        	<strong><?php echo __('Titel', 'superkreativ'); ?>:</strong>
         	<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>">
         </p>
         <p>
-			<strong><?php echo __('Choose city', 'superkreativ'); ?>:</strong>
+			<strong><?php echo __('Välj stad', 'superkreativ'); ?>:</strong>
            	<select class="widefat" id="<?php echo $this->get_field_id('infofor'); ?>" name="<?php echo $this->get_field_name('city'); ?>">
-            	<option value="" <?php echo ($city == '') ? 'selected="selected"' : ''; ?>><?php echo __('Choose', 'superkreativ'); ?></option>
-           		<option value="Klässbol" <?php echo ($city == 'Klässbol') ? 'selected="selected"' : ''; ?>>Klässbol</option>
-                <option value="Stockholm" <?php echo ($city == 'Stockholm') ? 'selected="selected"' : ''; ?>>Stockholm</option>
+            	<option value="" <?php echo ($city == '') ? 'selected="selected"' : ''; ?>><?php echo __('Välj', 'superkreativ'); ?></option>
+           		<option value="<?php echo __('Stockholm', 'superkreativ'); ?>" <?php echo ($city == 'Klässbol') ? 'selected="selected"' : ''; ?>><?php echo __('Stockholm', 'superkreativ'); ?></option>
+                <option value="<?php echo __('Sandy Point Village', 'superkreativ'); ?>" <?php echo ($city == 'Stockholm') ? 'selected="selected"' : ''; ?>><?php echo __('Sandy Point Village', 'superkreativ'); ?></option>
             </select>
 		</p>
 		<p>
-			<strong><?php echo __('Address', 'superkreativ'); ?>:</strong>
+			<strong><?php echo __('Adress', 'superkreativ'); ?>:</strong>
             <input class="widefat" id="<?php echo $this->get_field_id('address'); ?>" name="<?php echo $this->get_field_name('address'); ?>" type="text" value="<?php echo $address; ?>" />
 		</p>
         <p>
-			<strong><?php echo __('Zip Code', 'superkreativ'); ?>:</strong>
+			<strong><?php echo __('Postnummer', 'superkreativ'); ?>:</strong>
             <input class="widefat" id="<?php echo $this->get_field_id('zip'); ?>" name="<?php echo $this->get_field_name('zip'); ?>" type="text" value="<?php echo $zip; ?>" />
 		</p>
         <p>
-        	<strong><?php echo __('State', 'superkreativ'); ?>:</strong>
+        	<strong><?php echo __('Län', 'superkreativ'); ?>:</strong>
             <select class="widefat" id="<?php echo $this->get_field_id('state'); ?>" name="<?php echo $this->get_field_name('state'); ?>">
                 <option value="" <?php echo ($state == '') ? 'selected="selected"' : ''; ?>><?php echo __('State', 'superkreativ'); ?></option>
                 <?php 
@@ -137,11 +137,11 @@ class KontaktOppetider extends WP_Widget{
             </select>
 		</p>
          <p>
-        	<strong><?php echo __('Address (Extra info)', 'superkreativ'); ?>:</strong>
+        	<strong><?php echo __('Adress (Extra info)', 'superkreativ'); ?>:</strong>
             <input class="widefat" id="<?php echo $this->get_field_id('address_extra'); ?>" name="<?php echo $this->get_field_name('address_extra'); ?>" type="text" value="<?php echo $address_extra; ?>" />
 		</p>
         <p>
-        	<strong><?php echo __('Phone', 'superkreativ'); ?>:</strong>
+        	<strong><?php echo __('Telefon', 'superkreativ'); ?>:</strong>
             <input class="widefat" id="<?php echo $this->get_field_id('phone'); ?>" name="<?php echo $this->get_field_name('phone'); ?>" type="text" value="<?php echo $phone; ?>" />
 		</p>
         <p>
@@ -149,13 +149,13 @@ class KontaktOppetider extends WP_Widget{
             <input class="widefat" id="<?php echo $this->get_field_id('fax'); ?>" name="<?php echo $this->get_field_name('fax'); ?>" type="text" value="<?php echo $fax; ?>" />
 		</p>
         <p>
-        	<strong><?php echo __('Email', 'superkreativ'); ?>:</strong>
+        	<strong><?php echo __('E-post', 'superkreativ'); ?>:</strong>
             <input class="widefat" id="<?php echo $this->get_field_id('email'); ?>" name="<?php echo $this->get_field_name('email'); ?>" type="text" value="<?php echo $email; ?>" />
 		</p>
-        <p><strong><?php echo __('Opening hours Monday-Friday', 'superkreativ'); ?>:</strong></p>
+        <p><strong><?php echo __('Öppetider Måndag-Fredag', 'superkreativ'); ?>:</strong></p>
         <p>
             <select class="widefat" id="<?php echo $this->get_field_id('openinghoursfrommonfri'); ?>" name="<?php echo $this->get_field_name('openinghoursfrommonfri'); ?>" style="display:inline-block;width:49%;margin-right:1%;">
-                <option value="" <?php echo ($openinghoursfrommonfri == '') ? 'selected="selected"' : ''; ?>><?php echo __('From', 'superkreativ'); ?></option>
+                <option value="" <?php echo ($openinghoursfrommonfri == '') ? 'selected="selected"' : ''; ?>><?php echo __('Från', 'superkreativ'); ?></option>
                 <?php 
 			   		foreach ($hours as $hour){
                 		echo '<option value="'.$hour.'" '.(($hour == $openinghoursfrommonfri) ? 'selected="selected"' : '').'>'.$hour.'</option>';
@@ -163,7 +163,7 @@ class KontaktOppetider extends WP_Widget{
 				?>
             </select>
             <select class="widefat" id="<?php echo $this->get_field_id('openinghourstomonfri'); ?>" name="<?php echo $this->get_field_name('openinghourstomonfri'); ?>" style="display:inline-block;width:49%;">
-                <option value="" <?php echo ($openinghourstomonfri == '') ? 'selected="selected"' : ''; ?>><?php echo __('To', 'superkreativ'); ?></option>
+                <option value="" <?php echo ($openinghourstomonfri == '') ? 'selected="selected"' : ''; ?>><?php echo __('Till', 'superkreativ'); ?></option>
                 <?php 
 			   		foreach ($hours as $hour){
                 		echo '<option value="'.$hour.'" '.(($hour == $openinghourstomonfri) ? 'selected="selected"' : '').'>'.$hour.'</option>';
@@ -171,10 +171,10 @@ class KontaktOppetider extends WP_Widget{
 				?>
             </select>
         </p>
-        <p><strong><?php echo __('Opening hours Saturday', 'superkreativ'); ?>:</strong></p>
+        <p><strong><?php echo __('Öppetider Lördag', 'superkreativ'); ?>:</strong></p>
         <p>    
             <select class="widefat" id="<?php echo $this->get_field_id('openinghoursfromsat'); ?>" name="<?php echo $this->get_field_name('openinghoursfromsat'); ?>" style="display:inline-block;width:49%;margin-right:1%;">
-                <option value="" <?php echo ($openinghoursfromsat == '') ? 'selected="selected"' : ''; ?>><?php echo __('From', 'superkreativ'); ?></option>
+                <option value="" <?php echo ($openinghoursfromsat == '') ? 'selected="selected"' : ''; ?>><?php echo __('Från', 'superkreativ'); ?></option>
                 <?php 
 			   		foreach ($hours as $hour){
                 		echo '<option value="'.$hour.'" '.(($hour == $openinghoursfromsat) ? 'selected="selected"' : '').'>'.$hour.'</option>';
@@ -182,7 +182,7 @@ class KontaktOppetider extends WP_Widget{
 				?>
             </select>
             <select class="widefat" id="<?php echo $this->get_field_id('openinghourstosat'); ?>" name="<?php echo $this->get_field_name('openinghourstosat'); ?>" style="display:inline-block;width:49%;">
-                <option value="" <?php echo ($openinghourstosat == '') ? 'selected="selected"' : ''; ?>><?php echo __('To', 'superkreativ'); ?></option>
+                <option value="" <?php echo ($openinghourstosat == '') ? 'selected="selected"' : ''; ?>><?php echo __('Till', 'superkreativ'); ?></option>
                 <?php 
 			   		foreach ($hours as $hour){
                 		echo '<option value="'.$hour.'" '.(($hour == $openinghourstosat) ? 'selected="selected"' : '').'>'.$hour.'</option>';
@@ -190,10 +190,10 @@ class KontaktOppetider extends WP_Widget{
 				?>
             </select>
 		</p>
-        <p><strong><?php echo __('Opening hours Sunday', 'superkreativ'); ?>:</strong></p>
+        <p><strong><?php echo __('Öppetider Söndag', 'superkreativ'); ?>:</strong></p>
         <p>
             <select class="widefat" id="<?php echo $this->get_field_id('openinghoursfromsun'); ?>" name="<?php echo $this->get_field_name('openinghoursfromsun'); ?>" style="display:inline-block;width:49%;margin-right:1%;">
-                <option value="" <?php echo ($openinghoursfromsun == '') ? 'selected="selected"' : ''; ?>><?php echo __('From', 'superkreativ'); ?></option>
+                <option value="" <?php echo ($openinghoursfromsun == '') ? 'selected="selected"' : ''; ?>><?php echo __('Från', 'superkreativ'); ?></option>
                 <?php 
 			   		foreach ($hours as $hour){
                 		echo '<option value="'.$hour.'" '.(($hour == $openinghoursfromsun) ? 'selected="selected"' : '').'>'.$hour.'</option>';
@@ -201,7 +201,7 @@ class KontaktOppetider extends WP_Widget{
 				?>
             </select>
             <select class="widefat" id="<?php echo $this->get_field_id('openinghourstosun'); ?>" name="<?php echo $this->get_field_name('openinghourstosun'); ?>" style="display:inline-block;width:49%;">
-                <option value="" <?php echo ($openinghourstosun == '') ? 'selected="selected"' : ''; ?>><?php echo __('To', 'superkreativ'); ?></option>
+                <option value="" <?php echo ($openinghourstosun == '') ? 'selected="selected"' : ''; ?>><?php echo __('Till', 'superkreativ'); ?></option>
                 <?php 
 			   		foreach ($hours as $hour){
                 		echo '<option value="'.$hour.'" '.(($hour == $openinghourstosun) ? 'selected="selected"' : '').'>'.$hour.'</option>';
@@ -210,7 +210,7 @@ class KontaktOppetider extends WP_Widget{
             </select>
         </p>
         <p>
-        	<strong><?php echo __('Free text', 'superkreativ'); ?>:</strong>
+        	<strong><?php echo __('Fri text', 'superkreativ'); ?>:</strong>
             <textarea class="widefat" id="<?php echo $this->get_field_id('free_text'); ?>" name="<?php echo $this->get_field_name('free_text'); ?>" value="<?php echo $free_text; ?>" rows="10" style="resize:vertical;"><?php echo $free_text; ?></textarea>
 		</p>
 		<?php
@@ -220,4 +220,4 @@ class KontaktOppetider extends WP_Widget{
 /* 
 * Register custom widgets
 */
-register_widget('KontaktOppetider');
+register_widget('ContactOpeningHours');
