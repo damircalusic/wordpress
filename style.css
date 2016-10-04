@@ -2,6 +2,16 @@ embed,iframe,object {max-width: 100%;}
 .video-container{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin-bottom:3em;}
 .video-container iframe, .video-container object, .video-container embed, .video-container video{position:absolute;top:0;left:0;width:100%;height:100%;}
 .hidden {display: none;}
+.main-language-chooser{float:right;}
+.qtranxs_widget,.qtranxs_language_chooser{margin:0;padding:0;}
+.qtranxs_language_chooser{list-style-type:none;}
+.qtranxs_language_chooser li{opacity:.5;-webkit-transition:all .5s linear;-moz-transition:all .5s linear;transition:all .5s linear;display:inline-block;}
+.qtranxs_language_chooser li.active{opacity:1;}
+.qtranxs_language_chooser li:hover{opacity:1;}
+.qtranxs_text_sv span, .qtranxs_text_en span, .qtranxs_text_de span{text-indent:-99999px;display:inline-block;}
+.qtranxs_text_sv:before{content:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAMAAABYzB2OAAAAh1BMVEUAm+kAlOAAjNMAhcmEu3j//wD//RUAfbwAdK8AbKIAjdQAhsoAfr59sXL//gD/8BQAdrIAbaUAZZgAb6dunGT/4AD30xIAZpkAXYwAXY0AVYA+n6M7lpo0hIiPqlD/1Q4rb3InZWjsvADWqwAAVoEATXRdg1TQsg8ATnUARWhUd029oQ0APFsjxPQVAAAAWklEQVQIW23MywpAUBhF4b3O/SfF2Ps/nzKRQgYocvbwq70QIGCXJCkA2I+cFb1IAbzlDyUYQWJpjps8RMt6r6tS5VjJZ/MfGqBYcuq2OF/SBjBLTv1apof8CR+iD3ZbxHyQAAAAAElFTkSuQmCC');padding:2.5px;}
+.qtranxs_text_en:before{content:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAMAAABYzB2OAAAA2FBMVEX/eXn////19f8eHpgAAIWmpur/GhrKirD3ODj8ra3xpNH/RET/19dycsQAAH6ent7/GRlvZLX/bXb/XFz/+fmwsNAAAIx1asDkYGjxV1f//PzCwuUZGX+Li8PlFha0e53rNjb/srJcXJ4AAF3V1fDTyOQAAFX/9/f/2dnkERHht7fMpqb/AAD+AADgAAC8AACrAAAAAH1ra7hLRHsAAE3Ly/DcT0/AUVdSSoZ1daTBEhJUVJHc3OLIiYmlJiZwTGHWMTGWZoMTE2FqapWvERGHh5+qnZ2DLy+GG9omAAAAf0lEQVQIW23LvwpBcQBH8XP8bm5uGKVQ/pTJYpD3fwJPIIqJUQZKXwM2Z/zUEVVQEkilNnrv+qWi6sBvJEWPM62aftHj4kl9U62LLgVAAkBLV37ol3/pz1g1/STpPWjvp8mrLq7dTZOXkiTJSDeHuV4ZSC4MVe1s9QwTyQnGRd89BSoKA/bNPAAAAABJRU5ErkJggg%3D%3D');padding:2.5px;}
+.qtranxs_text_de:before{content:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAS0lEQVR4AdXPJQLDYBCE0Ve4/wmr6homFyYdqPs/tTyzb38RxtroHilRKL8ZGfm6yofcW0fjOkkpKbzlVJTS/OrOvjZWe3LGPhZlJtI6I8ap2OnfAAAAAElFTkSuQmCC');padding:2.5px;}
 .aelia_eu_vat_assistant.checkout_field .title {font-size: 100%;margin: 0;}
 #woocommerce_eu_vat_number .validation_result .icon{font-family:WooCommerce;speak:none;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;margin-right:7px;font-style:normal;}
 #woocommerce_eu_vat_number .validation_result .icon {margin-left: 4px;}
