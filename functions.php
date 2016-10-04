@@ -125,7 +125,7 @@ function superkreativ_add_dashboard_widgets(){
 	//add_meta_box('superkreativ_ett',__('Ett','superkreativ'),'superkreativ_ett_func','dashboard','normal','high');
 	
 	// Column 2
-	//add_meta_box('superkreativ_tva',__('Två','superkreativ'),'superkreativ_tva_func','dashboard','side','high');
+	add_meta_box('superkreativ_to_do',__('Anteckningar','superkreativ'),'superkreativ_to_do_function','dashboard','side','high');
 		
 	// Column 3
 	add_meta_box('superkreativ_support',__('Support','superkreativ'),'superkreativ_support_function','dashboard','column3','high');
@@ -135,12 +135,74 @@ function superkreativ_add_dashboard_widgets(){
 }
 
 /**
+* Add To Do widget on WordPress Panel
+*/
+function superkreativ_to_do_function(){
+	$imgargs = array(
+					'post_type' => 'attachment',
+					'post_mime_type' => array('image/jpeg', 'image/jpg', 'image/png', 'image/gif'),
+					'posts_per_page' => -1, 
+					'orderby' => 'ID',
+					'order' => 'DESC', 
+				);
+
+	$images = get_posts($imgargs);
+	
+	if($images){
+		$imgcounter = 0;
+		$imgtotalsarray = wp_count_attachments(array('image'));
+		$imgtotals = get_object_vars($imgtotalsarray);
+		$imgtotal = $imgtotals['image/jpeg'] + $imgtotals['image/png'];
+		$imgooptimerat = '';
+	
+		foreach($images as $image){
+			$id = $image->ID;
+			$title = $image->post_title;
+			$excerpt = $image->post_excerpt;
+			$content = $image->post_content;
+			
+			if(!empty($title) && !empty($excerpt) && !empty($content)){
+				$imgcounter++;		
+			}
+			else{
+				$imgooptimerat .= '<li style="margin:0;"><a href="/wp-admin/upload.php?item='.$id.'" target="_blank">'.__('Optimera bild','superkreativ').' '.$id.'</a></li>';
+			}
+		}
+	
+		echo '<p style="margin-bottom:0;"><strong>'.__('Antal optimerade bilder', 'sph').':</strong> <span>'.$imgcounter.'<span> / <span>'.$imgtotal.'</span></p>
+			  <p style="margin-top:0;">'.
+			  	(empty($imgooptimerat) ? __('Allt optimerat','superkreativ') : '<strong>'.__('Antal ej optimerade bilder','superkreativ').':</strong> '.($imgtotal - $imgcounter)).' 
+			  	<a id="visaooptimerade" href="#" data-id="imgooptimerat">Visa</a>
+			  </p>
+			  <ul id="imgooptimerat" style="display:none;">'.$imgooptimerat.'</ul>';
+	}
+	
+	?>
+	<script>
+        jQuery(document).ready(function($){
+            $("#visaooptimerade").click(function() {
+				var id = $(this).data("id");
+				
+				$("#" + id).slideToggle();
+			});
+		});
+    </script>
+    <?php
+}
+
+/**
 * Add support widget on WordPress Panel
 */
 function superkreativ_support_function(){
-	echo '<img style="display:block;margin:0 auto;" src="https://www.superkreativ.se/apple-touch-icon-60x60.png" width="60" height="60"><p style="margin-bottom:0;text-align:center;"><strong>'.__('Angående form och design.','superkreativ').'</strong></p><p style="margin:0;text-align:center;">'.__('Tel:','superkreativ').' +46 (0) 706 40 18 00</p><p style="margin-top:0;text-align:center;">'.__('E-post:','superkreativ').' <a href="mailto:amelie.malmberg@gmail.com">amelie.malmberg@gmail.com</a></p><p style="margin-bottom:0;text-align:center;"><strong>'.__('Angående text och information.','superkreativ').'</strong></p><p style="margin:0;text-align:center;">'.__('Tel:','superkreativ').' +46 (0) 761 42 00 26</p><p style="margin-top:0;text-align:center;">'.__('E-post:','superkreativ').' <a href="mailto:sarastenberg@live.se">sarastenberg@live.se</a></p><p style="margin-bottom:0;text-align:center;"><strong>'.__('Angående underhåll och support.','superkreativ').'</strong></p><p style="margin:0;text-align:center;">'.__('Tel:','superkreativ').' +46 (0) 768 14 57 37</p><p style="margin:0;text-align:center;">'.__('E-post:','superkreativ').' <a href="mailto:damir@webkreativ.se">damir@webkreativ.se</a></p>';
+	echo '<img style="display:block;margin:0 auto;" src="http://webcopywriting.se/wp-content/uploads/freshframework/ff_fresh_favicon/favicon_60x60--2015_03_24__06_52_05.png" width="60" height="60">
+		  <p style="margin-bottom:0;text-align:center;"><strong>'.__('Angående text och information.','superkreativ').'</strong></p>
+		  <p style="margin:0;text-align:center;">'.__('Telefon:','superkreativ').' +46 (0) 737 18 12 62</p>
+		  <p style="margin-top:0;text-align:center;">'.__('E-post:','superkreativ').' <a href="mailto:jcnwordproduction@gmail.com">jcnwordproduction@gmail.com</a></p>
+		  <img style="display:block;margin:0 auto;" src="https://www.webkreativ.se/apple-touch-icon-60x60.png" width="60" height="60">
+		  <p style="margin-bottom:0;text-align:center;"><strong>'.__('Angående underhåll och support.','superkreativ').'</strong></p>
+		  <p style="margin:0;text-align:center;">'.__('Telefon:','superkreativ').' +46 (0) 768 14 57 37</p>
+		  <p style="margin:0;text-align:center;">'.__('E-post:','superkreativ').' <a href="mailto:damir@webkreativ.se">damir@webkreativ.se</a></p>';
 }
-
 /**
 * Move Yoast SEO to bottom at all pages/posts
 */
