@@ -21,24 +21,13 @@ embed,iframe,object {max-width: 100%;}
 #woocommerce_eu_vat_number .validation_result .invalid .icon:before {content: "\e016";}
 #woocommerce_location_self_certification {margin-top: 10px;padding: 4px;border: 1px dashed #ccc;}
 #woocommerce_location_self_certification label{line-height: normal;}
+#totop {display: inline-block;height: 40px;width: 40px;position: fixed;bottom: 40px;right: 10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);overflow: hidden;text-indent: 100%;white-space: nowrap;background: rgba(232, 98, 86, 0.8) url('img/tt-top-arrow.svg') no-repeat center 50%;visibility: hidden;opacity: 0;-webkit-transition: opacity .3s 0s, visibility 0s .3s;-moz-transition: opacity .3s 0s, visibility 0s .3s;transition: opacity .3s 0s, visibility 0s .3s;}
+#totop.tt-is-visible, #totop.tt-fade-out, .no-touch #totop:hover {-webkit-transition: opacity .3s 0s, visibility 0s 0s;-moz-transition: opacity .3s 0s, visibility 0s 0s;transition: opacity .3s 0s, visibility 0s 0s;}
+#totop.tt-is-visible {visibility: visible;opacity: 1;}
+#totop.tt-fade-out {opacity: .5;}
+.no-touch #totop:hover {background-color: #e86256;opacity: 1;}
 .owl-carousel,.owl-carousel .owl-item{position:relative;-webkit-tap-highlight-color:transparent}.owl-carousel .animated{-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;animation-fill-mode:both}.owl-carousel .owl-animated-in{z-index:0}.owl-carousel .owl-animated-out{z-index:1}.owl-carousel .fadeOut{-webkit-animation-name:fadeOut;animation-name:fadeOut}@-webkit-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}.owl-height{-webkit-transition:height .5s ease-in-out;-moz-transition:height .5s ease-in-out;-ms-transition:height .5s ease-in-out;-o-transition:height .5s ease-in-out;transition:height .5s ease-in-out}.owl-carousel{display:none;width:100%;z-index:1}.owl-carousel .owl-stage{position:relative;-ms-touch-action:pan-Y}.owl-carousel .owl-stage:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}.owl-carousel .owl-stage-outer{position:relative;overflow:hidden;-webkit-transform:translate3d(0,0,0)}.owl-carousel .owl-controls .owl-dot,.owl-carousel .owl-controls .owl-nav .owl-next,.owl-carousel .owl-controls .owl-nav .owl-prev{cursor:pointer;cursor:hand;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.owl-carousel.owl-loaded{display:block}.owl-carousel.owl-loading{opacity:0;display:block}.owl-carousel.owl-hidden{opacity:0}.owl-carousel .owl-refresh .owl-item{display:none}.owl-carousel .owl-item{min-height:1px;float:left;-webkit-backface-visibility:hidden;-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.owl-carousel .owl-item img{display:block;width:100%;-webkit-transform-style:preserve-3d;transform-style:preserve-3d}.owl-carousel.owl-text-select-on .owl-item{-webkit-user-select:auto;-moz-user-select:auto;-ms-user-select:auto;user-select:auto}.owl-carousel .owl-grab{cursor:move;cursor:-webkit-grab;cursor:-o-grab;cursor:-ms-grab;cursor:grab}.owl-carousel.owl-rtl{direction:rtl}.owl-carousel.owl-rtl .owl-item{float:right}.no-js .owl-carousel{display:block}.owl-carousel .owl-item .owl-lazy{opacity:0;-webkit-transition:opacity .4s ease;-moz-transition:opacity .4s ease;-ms-transition:opacity .4s ease;-o-transition:opacity .4s ease;transition:opacity .4s ease}
-#gallery-thumbs .owl-controls{
-	text-align:left;
-}
-#gallery-thumbs .owl-controls .owl-dot{
-	display:inline;
-}
-#gallery-thumbs .owl-controls .owl-dot span{
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin:0 7px 0 0;
-    opacity: 0.5;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    background: #757575;
-}
-#gallery-thumbs .owl-controls .owl-dot.active span, #gallery-thumbs .owl-controls .owl-dot:hover span{
-	opacity: 1;
-}
+#gallery-thumbs .owl-controls{text-align:left;}
+#gallery-thumbs .owl-controls .owl-dot{display:inline;}
+#gallery-thumbs .owl-controls .owl-dot span{display: inline-block;width: 20px;height: 20px;margin:0 7px 0 0;opacity: 0.5;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;background: #757575;}
+#gallery-thumbs .owl-controls .owl-dot.active span, #gallery-thumbs .owl-controls .owl-dot:hover span{opacity: 1;}
