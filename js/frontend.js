@@ -18,4 +18,21 @@ jQuery(document).ready(function($){
 		 items:10,
 	});
 	
+	// Scroll to top
+	var offset = 300, offset_opacity = 1200, scroll_top_duration = 700, $back_to_top = $('#totop');
+	//hide or show the "back to top" link
+	$(window).scroll(function(){
+		( $(this).scrollTop() > offset ) ? $back_to_top.addClass('tt-is-visible') : $back_to_top.removeClass('tt-is-visible cd-fade-out');
+		if( $(this).scrollTop() > offset_opacity ) { 
+			$back_to_top.addClass('tt-fade-out');
+		}
+	});
+	//smooth scroll to top
+	$back_to_top.on('click', function(event){
+		event.preventDefault();
+		$('body,html').animate({
+			scrollTop: 0 ,
+		 	}, scroll_top_duration
+		);
+	});
 });
