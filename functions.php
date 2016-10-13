@@ -55,8 +55,8 @@ function superkreativ_widgets_init() {
 	
 	remove_action('wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
 	
-	require(get_template_directory().'/includes/widgets.php');
-	require(get_template_directory().'/includes/sidebars.php');
+	require(get_template_directory().'/inc/widgets.php');
+	require(get_template_directory().'/inc/sidebars.php');
 }
 
 /**
@@ -152,7 +152,7 @@ function superkreativ_to_do_function(){
 		$imgcounter = 0;
 		$imgtotalsarray = wp_count_attachments(array('image'));
 		$imgtotals = get_object_vars($imgtotalsarray);
-		$imgtotal = $imgtotals['image/jpeg'] + $imgtotals['image/png'];
+		$imgtotal = isset($imgtotals['image/jpeg']) + isset($imgtotals['image/png']);
 		$imgooptimerat = '';
 	
 		foreach($images as $image){
@@ -518,7 +518,7 @@ function superkreativ_get_instagram_feed(){
 /**
 * Include Post Types
 */
-require (get_template_directory().'/includes/post-types.php');
+require (get_template_directory().'/inc/post-types.php');
 
 /*
 * Register WooCommerce Snippets
