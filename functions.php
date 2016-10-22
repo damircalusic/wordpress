@@ -150,8 +150,7 @@ function superkreativ_to_do_function(){
 	
 	if($images){
 		$imgcounter = 0;
-		$imgtotalsarray = wp_count_attachments(array('image'));
-		$imgtotals = get_object_vars($imgtotalsarray);
+		$imgtotals = get_object_vars(wp_count_attachments(array('image')));
 		$gif = isset($imgtotals['image/gif']) ? $imgtotals['image/gif'] : 0;
 		$jpg = isset($imgtotals['image/jpg']) ? $imgtotals['image/jpg'] : 0;
 		$jpeg = isset($imgtotals['image/jpeg']) ? $imgtotals['image/jpeg'] : 0;
