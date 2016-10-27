@@ -20,6 +20,7 @@ function superkreativ_woocommerce_script_cleaner() {
 		wp_dequeue_style('woocommerce-layout');
 		wp_dequeue_style('woocommerce-smallscreen');
 		wp_dequeue_style('woocommerce_fancybox_styles');
+		wp_dequeue_script('wc-aelia-eu-vat-assistant-frontend');
 		wp_dequeue_script('wc-add-payment-method' );
 		wp_dequeue_script('wc-lost-password');
 		wp_dequeue_script('wc_price_slider');
