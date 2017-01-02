@@ -170,27 +170,26 @@ function superkreativ_to_do_function(){
 			}
 			else{
 				$imgoptimized .= '<tr>
-						     <td class="date">'.__('ID','superkreativ').': <br><a href="/wp-admin/upload.php?item='.$id.'" target="_blank">'.$id.'</a></td>
-						     <td>'.sprintf(__('Optimize image: %s','superkreativ'), '<a href="/wp-admin/upload.php?item='.$id.'" target="_blank">'.$guid.'</a>').'</td>
-					          </tr>';
+									<td class="date">'.__('ID','superkreativ').': <br><a href="/wp-admin/upload.php?item='.$id.'" target="_blank">'.$id.'</a></td>
+									<td>'.sprintf(__('Optimize image: %s','superkreativ'), '<a href="/wp-admin/upload.php?item='.$id.'" target="_blank">'.$guid.'</a>').'</td>
+								   </tr>';
 			}
 		}
 	
 		echo '<p>
-			<strong>'.__('Antal optimerade bilder', 'superkreativ').':</strong> <span>'.$imgcounter.'<span> / <span>'.$imgtotal.'</span><br>'.
-			(empty($imgoptimized) ? __('Allt är optimerat','superkreativ') : '<strong>'.__('Antal ej optimerade bilder','superkreativ').':</strong> '.($imgtotal - $imgcounter)).' 
-			<a id="displayoptimized" href="#" data-id="imgoptimized">'.__('Visa','superkreativ').'</a>
-		       </p>
-		       <table id="imgoptimized" class="wp-list-table widefat fixed striped posts">'.$imgoptimized.'</table>';
+				 <strong>'.__('Amount of optimized images', 'superkreativ').':</strong> <span>'.$imgcounter.'<span> / <span>'.$imgtotal.'</span><br>'.
+				 (empty($imgoptimized) ? __('Everything optimized','superkreativ') : '<strong>'.__('Amount of non optimized images','superkreativ').':</strong> '.($imgtotal - $imgcounter)).' 
+			  </p>
+			  <table id="imgoptimized" class="wp-list-table widefat fixed striped posts">'.$imgoptimized.'</table>
+			  <p><a id="displayoptimized" class="button button-primary button-large" href="#" data-id="imgoptimized">'.__('Display all','superkreativ').'</a></p>';
 	}
-	
 	?>
 	<script>
         jQuery(document).ready(function($){
             $("#displayoptimized").click(function() {
 				var id = $(this).data("id");
 				
-				$("#" + id).slideToggle();
+				$("#" + id + " tr").css({'display':'block'});
 			});
 		});
     </script>
