@@ -156,34 +156,38 @@ function superkreativ_to_do_function(){
 		$jpeg = isset($imgtotals['image/jpeg']) ? $imgtotals['image/jpeg'] : 0;
 		$png = isset($imgtotals['image/png']) ? $imgtotals['image/png'] : 0;
 		$imgtotal = ($gif + $jpg + $jpeg + $png);
-		$imgooptimerat = '';
+		$imgoptimized = '';
 	
 		foreach($images as $image){
 			$id = $image->ID;
 			$title = $image->post_title;
 			$excerpt = $image->post_excerpt;
 			$content = $image->post_content;
+			$guid = $image->guid;
 			
 			if(!empty($title) && !empty($excerpt) && !empty($content)){
 				$imgcounter++;		
 			}
 			else{
-				$imgooptimerat .= '<li style="margin:0;"><a href="/wp-admin/upload.php?item='.$id.'" target="_blank">'.__('Optimera bild','superkreativ').' '.$id.'</a></li>';
+				$imgoptimized .= '<tr>
+						     <td class="date"><a href="/wp-admin/upload.php?item='.$id.'" target="_blank">'.$id.'</a></td>
+						     <td>'.sprintf(__('Optimize image: %s','superkreativ'), '<a href="/wp-admin/upload.php?item='.$id.'" target="_blank">'.$guid.'</a>').'</td>
+					          </tr>';
 			}
 		}
 	
-		echo '<p style="margin-bottom:0;"><strong>'.__('Antal optimerade bilder', 'sph').':</strong> <span>'.$imgcounter.'<span> / <span>'.$imgtotal.'</span></p>
-			  <p style="margin-top:0;">'.
-			  	(empty($imgooptimerat) ? __('Allt optimerat','superkreativ') : '<strong>'.__('Antal ej optimerade bilder','superkreativ').':</strong> '.($imgtotal - $imgcounter)).' 
-			  	<a id="visaooptimerade" href="#" data-id="imgooptimerat">Visa</a>
-			  </p>
-			  <ul id="imgooptimerat" style="display:none;">'.$imgooptimerat.'</ul>';
+		echo '<p>
+			<strong>'.__('Antal optimerade bilder', 'superkreativ').':</strong> <span>'.$imgcounter.'<span> / <span>'.$imgtotal.'</span><br>'.
+			(empty($imgoptimized) ? __('Allt är optimerat','superkreativ') : '<strong>'.__('Antal ej optimerade bilder','superkreativ').':</strong> '.($imgtotal - $imgcounter)).' 
+			<a id="displayoptimized" href="#" data-id="imgoptimized">'.__('Visa','superkreativ').'</a>
+		       </p>
+		       <table id="imgoptimized" class="wp-list-table widefat fixed striped posts">'.$imgoptimized.'</table>';
 	}
 	
 	?>
 	<script>
         jQuery(document).ready(function($){
-            $("#visaooptimerade").click(function() {
+            $("#displayoptimized").click(function() {
 				var id = $(this).data("id");
 				
 				$("#" + id).slideToggle();
@@ -198,13 +202,13 @@ function superkreativ_to_do_function(){
 */
 function superkreativ_support_function(){
 	echo '<img style="display:block;margin:0 auto;" src="http://webcopywriting.se/wp-content/uploads/freshframework/ff_fresh_favicon/favicon_60x60--2015_03_24__06_52_05.png" width="60" height="60">
-		  <p style="margin-bottom:0;text-align:center;"><strong>'.__('Angående text och information.','superkreativ').'</strong></p>
-		  <p style="margin:0;text-align:center;">'.__('Telefon:','superkreativ').' +46 (0) 737 18 12 62</p>
-		  <p style="margin-top:0;text-align:center;">'.__('E-post:','superkreativ').' <a href="mailto:jcnwordproduction@gmail.com">jcnwordproduction@gmail.com</a></p>
-		  <img style="display:block;margin:0 auto;" src="https://www.webkreativ.se/apple-touch-icon-60x60.png" width="60" height="60">
-		  <p style="margin-bottom:0;text-align:center;"><strong>'.__('Angående underhåll och support.','superkreativ').'</strong></p>
-		  <p style="margin:0;text-align:center;">'.__('Telefon:','superkreativ').' +46 (0) 768 14 57 37</p>
-		  <p style="margin:0;text-align:center;">'.__('E-post:','superkreativ').' <a href="mailto:damir@webkreativ.se">damir@webkreativ.se</a></p>';
+	      <p style="margin-bottom:0;text-align:center;"><strong>'.__('Angående text och information.','superkreativ').'</strong></p>
+	      <p style="margin:0;text-align:center;">'.__('Telefon:','superkreativ').' +46 (0) 737 18 12 62</p>
+	      <p style="margin-top:0;text-align:center;">'.__('E-post:','superkreativ').' <a href="mailto:jcnwordproduction@gmail.com">jcnwordproduction@gmail.com</a></p>
+	      <img style="display:block;margin:0 auto;" src="https://www.webkreativ.se/apple-touch-icon-60x60.png" width="60" height="60">
+	      <p style="margin-bottom:0;text-align:center;"><strong>'.__('Angående underhåll och support.','superkreativ').'</strong></p>
+	      <p style="margin:0;text-align:center;">'.__('Telefon:','superkreativ').' +46 (0) 768 14 57 37</p>
+	      <p style="margin:0;text-align:center;">'.__('E-post:','superkreativ').' <a href="mailto:damir@webkreativ.se">damir@webkreativ.se</a></p>';
 }
 /**
 * Move Yoast SEO to bottom at all pages/posts
