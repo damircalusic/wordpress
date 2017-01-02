@@ -73,7 +73,7 @@ function superkreativ_scripts() {
 	wp_register_script('jquery', includes_url('/js/jquery/jquery.js'), false, '', true);
 	
 	// Enqueue Scripts and Styles
-	//wp_enqueue_style('kroauth-style', get_stylesheet_uri());
+	//wp_enqueue_style('superkreativ-style', get_stylesheet_uri());
     	wp_enqueue_script('jquery');
 	wp_enqueue_script('superkreativ-script', get_template_directory_uri() . '/js/frontend.js', array(), '', true);
 	
@@ -170,7 +170,7 @@ function superkreativ_to_do_function(){
 			}
 			else{
 				$imgoptimized .= '<tr>
-						     <td class="date"><a href="/wp-admin/upload.php?item='.$id.'" target="_blank">'.$id.'</a></td>
+						     <td class="date">'.__('ID','superkreativ').': <br><a href="/wp-admin/upload.php?item='.$id.'" target="_blank">'.$id.'</a></td>
 						     <td>'.sprintf(__('Optimize image: %s','superkreativ'), '<a href="/wp-admin/upload.php?item='.$id.'" target="_blank">'.$guid.'</a>').'</td>
 					          </tr>';
 			}
