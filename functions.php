@@ -111,10 +111,33 @@ function superkreativ_remove_script_version($src){
 }
 
 /**
-* Remove pages from admin menues
+* Remove menu pages from WP Admin for specific users
 */
 function superkreativ_remove_menus(){
+	global $submenu;
+	$user = wp_get_current_user();
+
 	remove_menu_page('edit-comments.php');
+	
+	/*echo "<pre style='margin-left:200px;'>";
+	print_r($submenu);
+	echo "</pre>";*/
+	
+	// If not SuperAdmin
+	if(get_current_user_id() != '1000'){
+		remove_menu_page('tools.php');
+		remove_menu_page('options-general.php');
+		remove_menu_page('edit.php?post_type=acf-field-group'); // ACF Pro
+		remove_menu_page('wpseo_dashboard'); // Yoast SEO
+		remove_menu_page('itsec'); // Ithemes Security
+		remove_menu_page('yst_ga_dashboard'); // Yoast Google Analytics dashboard
+		unset($submenu['wysija_campaigns'][3]); // Wysia Premium
+		unset($submenu['woocommerce'][6]); // WC Status
+		unset($submenu['woocommerce'][7]); // WC Addons
+		unset($submenu['loco'][2]); // Plugins
+		unset($submenu['loco'][3]); // WordPress
+		unset($submenu['loco'][4]); // Settings
+	}
 }
 
 /**
