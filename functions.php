@@ -28,7 +28,7 @@ endif;
 * Change Login Admin Logo
 */
 function superkreativ_login_logo(){
-    echo '<style type="text/css">.login h1 a{background-image:url('.get_stylesheet_directory_uri().'/img/superkreativ-login.png) !important;-webkit-background-size:300px !important;background-size:300px !important;height:45px !important;width:300px !important;}</style>';
+    echo '<style type="text/css">#login h1 a, .login h1 a{background-image:url('.get_stylesheet_directory_uri().'/img/superkreativ-login.png);-webkit-background-size:300px;background-size:300px;height:45px;width:300px;}</style>';
 }
 
 /**
