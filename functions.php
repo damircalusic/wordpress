@@ -116,15 +116,16 @@ function superkreativ_remove_script_version($src){
 function superkreativ_remove_menus(){
 	global $submenu;
 	$user = wp_get_current_user();
-
 	remove_menu_page('edit-comments.php');
+	remove_menu_page('link-manager.php');
 	
 	/*echo "<pre style='margin-left:200px;'>";
+	echo get_current_user_id();
 	print_r($submenu);
 	echo "</pre>";*/
 	
 	// If not SuperAdmin
-	if(get_current_user_id() != '1000'){
+	if(get_current_user_id() != '3'){
 		remove_menu_page('tools.php');
 		remove_menu_page('options-general.php');
 		remove_menu_page('edit.php?post_type=acf-field-group'); // ACF Pro
