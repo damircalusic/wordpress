@@ -51,6 +51,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,600" media="not all" onload="if(media!='all')media='all'">
+<link rel="stylesheet" href="/wp-includes/css/dashicons.min.css" media="not all" onload="if(media!='all')media='all'">
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.css">
 <?php wp_head(); ?>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
