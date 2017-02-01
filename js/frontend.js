@@ -12,6 +12,7 @@ jQuery(document).ready(function($){
 		controlNav: false,
 		animationLoop: false,
 		slideshow: false,
+		touch: true,
 		itemWidth: 75,
 		itemMargin: 5,
 		asNavFor: '#slider'
@@ -23,6 +24,8 @@ jQuery(document).ready(function($){
 		controlNav: false,
 		animationLoop: false,
 		slideshow: false,
+		smoothHeight: true,
+		touch: true,
 		sync: "#carousel"
 	});
 	
