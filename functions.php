@@ -483,10 +483,11 @@ function superkreativ_get_facebook_post(){
 
 /*
 * Get the latest Instagram post from a user
-* get $user_id from http://jelled.com/instagram/lookup-user-id
+* https://smashballoon.com/instagram-feed/find-instagram-user-id/
+* http://jelled.com/instagram/lookup-user-id
 */
-function superkreativ_get_instagram_feed(){
-	$user_id = '*****';
+function klassbols_get_instagram_feed(){
+	$user_id = '***';
 	$client_id = '3a81a9fa2a064751b8c31385b91cc25c';
 	$access_token = '1808017486.3a81a9f.bfd5c0d3fe8c4da2a4dad5c47308da5b';
 	$api_url = 'https://api.instagram.com/v1/users/'.$user_id.'/media/recent/';
@@ -538,7 +539,8 @@ function superkreativ_get_instagram_feed(){
 		if(!empty($instagrams['data'])){
 			echo '<ul id="instagram-feed">';
 			foreach($instagrams['data'] as $insta){
-				echo '<li class="instagram-picture"><a href="'.$insta['link'].'" target="_blank"><img src="'.$insta['images']['low_resolution']['url'].'" width="'.$insta['images']['low_resolution']['width'].'" height="'.$insta['images']['low_resolution']['height'].'" alt="'.$insta['user']['full_name'].'" /></a></li>';
+				$img_url = explode("?",$insta['images']['low_resolution']['url']);
+				echo '<li class="instagram-picture"><a href="'.$link[0].'" rel="nofollow" target="_blank"><img src="'.$img_url[0].'" width="'.$insta['images']['low_resolution']['width'].'" height="'.$insta['images']['low_resolution']['height'].'" alt="'.$insta['user']['full_name'].'" /></a></li>';
 			}
 			echo "</ul>";
 		}
