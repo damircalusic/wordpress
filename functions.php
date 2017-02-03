@@ -486,7 +486,7 @@ function superkreativ_get_facebook_post(){
 * https://smashballoon.com/instagram-feed/find-instagram-user-id/
 * http://jelled.com/instagram/lookup-user-id
 */
-function klassbols_get_instagram_feed(){
+function superkreativ_get_instagram_feed(){
 	$user_id = '***';
 	$client_id = '3a81a9fa2a064751b8c31385b91cc25c';
 	$access_token = '1808017486.3a81a9f.bfd5c0d3fe8c4da2a4dad5c47308da5b';
