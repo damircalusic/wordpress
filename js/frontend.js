@@ -25,7 +25,7 @@ jQuery(document).ready(function($){
 		animationLoop: false,
 		slideshow: false,
 		smoothHeight: true,
-		touch: true,
+		touch: ($('.flexslider li').length > 1) ? true : false,
 		sync: "#carousel"
 	});
 	
