@@ -203,9 +203,8 @@ function superkreativ_to_do_function(){
 		echo '<p>
 				 <strong>'.__('Antal optimerade bilder', 'superkreativ').':</strong> <span>'.$imgcounter.'<span> / <span>'.$imgtotal.'</span><br>'.
 				 (empty($imgoptimized) ? __('Allt optimerat','superkreativ') : '<strong>'.__('Antal ej optimerade bilder','superkreativ').':</strong> '.($imgtotal - $imgcounter)).' 
-			  </p>
-			  <table id="imgoptimized" class="wp-list-table widefat fixed striped posts">'.$imgoptimized.'</table>
-			  <p><a id="displayoptimized" class="button button-primary button-large" href="#" data-id="imgoptimized">'.__('Visa alla','superkreativ').'</a></p>';
+			  </p>'.
+			  (empty($imgoptimized) ? '' : '<table id="imgoptimized" class="wp-list-table widefat fixed striped posts">'.$imgoptimized.'</table><p><a id="displayoptimized" class="button button-primary button-large" href="#" data-id="imgoptimized">'.__('Visa alla','superkreativ').'</a></p>');
 	}
 	?>
 	<script>
