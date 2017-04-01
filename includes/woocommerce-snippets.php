@@ -5,8 +5,8 @@ if ( !defined('ABSPATH')){ exit; }
 * Remove metaboxes on add new product in admin
 */
 function superkreativ_remove_product_metaboxes_admin() {
-     remove_meta_box('postexcerpt', 'product', 'normal');
-	 remove_meta_box('commentsdiv', 'product', 'normal');
+	remove_meta_box('postexcerpt', 'product', 'normal');
+	remove_meta_box('commentsdiv', 'product', 'normal');
 }
 
 /**
@@ -38,9 +38,11 @@ function superkreativ_woocommerce_script_cleaner() {
 		wp_dequeue_script('jquery-payment');
 		wp_dequeue_script('fancybox');
 		wp_dequeue_script('jqueryui');
+		wp_dequeue_script('aws-script');
 	}
 
 	wp_dequeue_style('wc-aelia-eu-vat-assistant-frontend');
+	wp_dequeue_style('aws-style');
 	wp_dequeue_style('woocommerce_chosen_styles');
 	wp_dequeue_style('woocommerce_prettyPhoto_css');
 	wp_dequeue_style('select2');
@@ -54,7 +56,7 @@ function superkreativ_woocommerce_script_cleaner() {
  * Define image sizes
  */
 function superkreativ_woocommerce_image_dimensions(){
-  	$catalog = array('width' => '300', 'height' => '300', 'crop' => 1);
+  	$catalog = array('width' => '300', 'height' => '300', 'crop' => array('center', 'top'));
 	$single = array('width' => '1335', 'height' => '9999', 'crop' => 0);
 	$thumbnail = array('width' 	=> '80', 'height'	=> '80', 'crop' => 1);
 
@@ -68,8 +70,12 @@ function superkreativ_woocommerce_image_dimensions(){
 * Change currency symbols
 */
 function superkreativ_currency_symbol($currency_symbol, $currency){
+	global $product;
+	
+	$superkreativ_product_price_or_meter = get_post_meta($product->id, 'superkreativ_product_price_or_meter', true);
+	
 	switch($currency){
-		case 'SEK': $currency_symbol = ':-'; 
+		case 'SEK': $currency_symbol = ((is_admin()) ? ($superkreativ_product_price_or_meter == 'yes') ? ' '.__('SEK/meter','superkreativ') : ' '.__('SEK/st','superkreativ') : ':-'); 
 		break;
 	}
 	
@@ -334,8 +340,40 @@ function superkreativ_hide_shipping_when_free_is_available($rates){
 */
 function superkreativ_woocommerce_variable_price_html($price_product_get_price_suffix, $product){
 	$prices = preg_match_all("/woocommerce-Price-amount/i", $price_product_get_price_suffix);
+	$superkreativ_product_price_or_meter = get_post_meta($product->id, 'superkreativ_product_price_or_meter', true);
 	
-	return ($prices >= 2) ? __('From','superkreativ').': '.$product->price.':-' : $price_product_get_price_suffix;
+	// If is Single product or is in Administration
+	//if(is_product() || is_admin()){
+		return (($prices >= 2) ? __('Från','superkreativ').': ' : '').number_format($product->price,0,' ',' ').' '.(($superkreativ_product_price_or_meter == 'yes') ? __('SEK/meter','superkreativ') : __('SEK/st','superkreativ'));
+	//}
+	
+	//return ($prices >= 2) ? __('Från','superkreativ').': '.$product->price.':-' : $price_product_get_price_suffix;
+}
+
+/**
+* Display custom product fields in the general tab of a single product in Admin
+*/
+function superkreativ_woocommerce_general_product_data_custom_fields() {
+	global $woocommerce, $post;
+	
+	echo '<div class="options_group">';
+	woocommerce_wp_checkbox(
+		array(
+			'id' => 'superkreativ_product_price_or_meter',
+			'wrapper_class' => 'checkbox_class',
+			'label' => __('Säljes per meter', 'klassbols'),
+			'description' => __('Kryssa för om produkten säljs per meter', 'superkreativ')
+		)
+	);
+	echo '</div>';
+}
+
+/**
+* Save all custom products fields in the Dtabase
+*/
+function superkreativ_woocommerce_process_product_meta_fields_save($post_id){
+	$superkreativ_product_price_or_meter = isset($_POST['superkreativ_product_price_or_meter']) ? 'yes' : 'no';
+	update_post_meta($post_id, 'superkreativ_product_price_or_meter', $superkreativ_product_price_or_meter);
 }
 
 // Remove Actions
@@ -355,6 +393,8 @@ add_action('woocommerce_single_product_summary', 'superkreativ_woocommerce_produ
 add_action('woocommerce_single_product_summary', 'superkreativ_woocommerce_product_main_description', 60);
 add_action('woocommerce_cart_actions', 'superkreativ_woocommerce_cart_actions');
 add_action('woocommerce_before_shop_loop', 'superkreativ_add_woocommerce_product_search', 40);
+add_action('woocommerce_product_options_general_product_data', 'superkreativ_woocommerce_general_product_data_custom_fields');
+add_action('woocommerce_process_product_meta', 'superkreativ_woocommerce_process_product_meta_fields_save');
 
 // Add Filters
 add_filter('woocommerce_currency_symbol', 'superkreativ_currency_symbol', 10, 2);
