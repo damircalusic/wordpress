@@ -15,41 +15,47 @@ function superkreativ_remove_product_metaboxes_admin() {
 function superkreativ_woocommerce_script_cleaner() {
 	// Unless we're in the store, remove all the cruft!
 	if (!is_woocommerce() && !is_cart() && !is_checkout()){
-		wp_dequeue_style('woocommerce_frontend_styles');
-		wp_dequeue_style('woocommerce-general');
-		wp_dequeue_style('woocommerce-layout');
-		wp_dequeue_style('woocommerce-smallscreen');
-		wp_dequeue_style('woocommerce_fancybox_styles');
-		wp_dequeue_script('wc-aelia-eu-vat-assistant-frontend');
-		wp_dequeue_script('wc-add-payment-method' );
-		wp_dequeue_script('wc-lost-password');
-		wp_dequeue_script('wc_price_slider');
-		wp_dequeue_script('wc-single-product');
-		wp_dequeue_script('wc-add-to-cart');
-		wp_dequeue_script('wc-cart-fragments');
-		wp_dequeue_script('wc-credit-card-form');
-		wp_dequeue_script('wc-checkout');
-		wp_dequeue_script('wc-add-to-cart-variation');
-		wp_dequeue_script('wc-single-product');
-		wp_dequeue_script('wc-cart');
-		wp_dequeue_script('woocommerce');
-		wp_dequeue_script('jquery-blockui');
-		wp_dequeue_script('jquery-placeholder');
-		wp_dequeue_script('jquery-payment');
-		wp_dequeue_script('fancybox');
-		wp_dequeue_script('jqueryui');
-		wp_dequeue_script('aws-script');
+		wp_dequeue_style('woocommerce_frontend_styles'); // WooCommerce style
+		wp_dequeue_style('woocommerce-general'); // WooCommerce style
+		wp_dequeue_style('woocommerce-layout'); // WooCommerce style
+		wp_dequeue_style('woocommerce-smallscreen'); // WooCommerce style
+		wp_dequeue_style('wcqi-css'); // WooCommerce style
+		wp_dequeue_script('wc-aelia-eu-vat-assistant-frontend'); // plugins/woocommerce-eu-vat-assistant/src/js/frontend/frontend.js
+		wp_dequeue_script('wc-add-payment-method'); // WooCommerce script
+		wp_dequeue_script('wc-lost-password'); // WooCommerce script
+		wp_dequeue_script('wc_price_slider'); // WooCommerce script
+		wp_dequeue_script('wc-single-product'); // WooCommerce script
+		wp_dequeue_script('wc-add-to-cart'); // WooCommerce script
+		wp_dequeue_script('wc-cart-fragments'); // WooCommerce script
+		wp_dequeue_script('wc-credit-card-form'); // WooCommerce script
+		wp_dequeue_script('wc-checkout'); // WooCommerce script
+		wp_dequeue_script('wc-add-to-cart-variation'); // WooCommerce script
+		wp_dequeue_script('wc-cart'); // WooCommerce script
+		wp_dequeue_script('wc-address-i18n'); // WooCommerce script
+		wp_dequeue_script('wc-country-select'); // WooCommerce script
+		wp_dequeue_script('wc-add-extra-charges'); // plugins/woocommerce-extra-charges-to-payment-gateways/assets/app.js
+		wp_dequeue_script('wcqi-js'); // WooCommerce script
+		wp_dequeue_script('woocommerce'); // WooCommerce script
+		wp_dequeue_script('jquery-cookie'); // WooCommerce script
+		wp_dequeue_script('jquery-blockui'); // WooCommerce script
+		wp_dequeue_script('jquery-placeholder'); // WooCommerce script
+		wp_dequeue_script('jquery-payment'); // WooCommerce script
+		wp_dequeue_script('fancybox'); // WooCommerce script
+		wp_dequeue_script('jqueryui'); // WooCommerce script
+		wp_dequeue_script('aws-script'); // plugins/advanced-woo-search/
 	}
 
-	wp_dequeue_style('wc-aelia-eu-vat-assistant-frontend');
-	wp_dequeue_style('aws-style');
-	wp_dequeue_style('woocommerce_chosen_styles');
-	wp_dequeue_style('woocommerce_prettyPhoto_css');
-	wp_dequeue_style('select2');
-	wp_dequeue_script('select2');
-	wp_dequeue_script('wc-chosen');
-	wp_dequeue_script('prettyPhoto');
-	wp_dequeue_script('prettyPhoto-init');
+	wp_dequeue_style('wc-aelia-eu-vat-assistant-frontend'); // plugins/woocommerce-eu-vat-assistant/src/design/css/frontend.css
+	wp_dequeue_style('aws-style'); // plugins/advanced-woo-search/
+	wp_dequeue_style('select2'); // WooCommerce style
+	wp_dequeue_style('woocommerce_fancybox_styles'); // WooCommerce style
+	wp_dequeue_style('woocommerce_chosen_styles'); // WooCommerce style
+	wp_dequeue_style('woocommerce_prettyPhoto_css'); // WooCommerce style
+	wp_dequeue_script('prettyPhoto'); // WooCommerce script
+	wp_dequeue_script('prettyPhoto-init'); // WooCommerce script
+	wp_dequeue_script('photoswipe'); // WooCommerce script
+	wp_dequeue_script('select2'); // WooCommerce script
+	wp_dequeue_script('wc-chosen'); // WooCommerce script
 }
 
 /**
