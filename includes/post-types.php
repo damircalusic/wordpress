@@ -211,7 +211,7 @@ function superkreativ_post_type_archive_seo_description($seo_desc){
 		$description = get_option('superkreativ_cpt_description-'.$post_type);
 		
 		if($description){
-			$seo_desc = substr($description, 0, 150);
+			$seo_desc = preg_replace('/\r?\n|\r/','',substr(strip_tags($description), 0, 150));
 		}
 	}
 	
