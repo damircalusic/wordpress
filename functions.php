@@ -547,6 +547,16 @@ function superkreativ_get_instagram_feed(){
 }
 
 /**
+* Add custom ACF Google Map variables
+* Get API key from https://developers.google.com/maps/documentation/javascript/get-api-key
+*/
+function superkreativ_acf_google_map_api($api){
+	$api['key'] = 'xxx';
+	
+	return $api;
+}
+
+/**
 * Include Post Types
 */
 require (get_template_directory().'/inc/post-types.php');
@@ -591,3 +601,4 @@ add_filter('embed_defaults', 'superkreativ_modify_embed_defaults');
 add_filter('embed_oembed_html', 'superkreativ_modify_embed_html', 10, 3);
 add_filter('posts_where', 'superkreativ_posts_where', 11, 2);
 add_filter('tiny_mce_before_init', 'superkreativ_tinymce_paste_as_text');
+add_filter('acf/fields/google_map/api', 'superkreativ_acf_google_map_api');
