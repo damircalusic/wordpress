@@ -29,6 +29,11 @@ jQuery(document).ready(function($){
 		sync: "#carousel"
 	});
 	
+	// Initiate WooCommerce category change
+	$('#choose_category select').change(function(){
+		location.href=$(this).val();
+	});
+	
 	// Scroll to top
 	var offset = 300, offset_opacity = 1200, scroll_top_duration = 700, $back_to_top = $('#totop');
 	//hide or show the "back to top" link
