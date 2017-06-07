@@ -244,6 +244,55 @@ function superkreativ_add_woocommerce_product_search() {
 }
 
 /*
+* Get all WooCommerce categories and display them in the shop except main shop page
+*/
+function superkreativ_get_shop_categories(){
+	if(!is_shop()){
+		$mains = get_categories(
+					array(
+						'taxonomy' => 'product_cat',
+						'orderby' => 'name',
+						'show_count' => 0,
+						'pad_counts' => 0,
+						'hierarchical' => 1,
+						'title_li' => '',
+						'hide_empty' => 0
+					)
+				);
+		
+		echo '<div id="choose_category"><div class="styled-dropdown"><select><option>'.__('Välj kategori','superkreativ').'</option>';
+		foreach($mains as $main) {
+			if($main->category_parent == 0) {
+				$main_slug = get_term_link($main->slug, 'product_cat');
+				$selected = (strpos('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], $main_slug) !== false) ? 'selected="selected"' : '';
+				echo '<option '.$selected.' value="'.$main_slug.'" class="strong">'.$main->name.'</option>';
+			} 
+			
+			$subs = get_categories(
+				array(
+					'taxonomy' => 'product_cat',
+					'child_of' => 0,
+					'parent' => $main->term_id,
+					'orderby' => 'name',
+					'show_count' => 0,
+					'pad_counts' => 0,
+					'hierarchical' => 1,
+					'title_li' => '',
+					'hide_empty' => 0
+				)
+			); 
+			
+			foreach($subs as $sub) {
+				$sub_slug = get_term_link($sub->slug, 'product_cat');
+				$selected_sub = (strpos('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], $sub_slug) !== false) ? 'selected="selected"' : '';
+				echo '<option '.$selected_sub.' value="'.$sub_slug.'">- '.$sub->name.'</option>';	
+			}
+		}
+		echo '</select></div></div>';
+	}
+}
+
+/*
 * Change number of columns displaying product thumbnails
 */
 function superkreativ_woocommerce_product_thumbnails_columns() {
@@ -399,6 +448,7 @@ add_action('woocommerce_single_product_summary', 'superkreativ_woocommerce_produ
 add_action('woocommerce_single_product_summary', 'superkreativ_woocommerce_product_main_description', 60);
 add_action('woocommerce_cart_actions', 'superkreativ_woocommerce_cart_actions');
 add_action('woocommerce_before_shop_loop', 'superkreativ_add_woocommerce_product_search', 40);
+add_action('woocommerce_before_shop_loop', 'superkreativ_get_shop_categories', 40);
 add_action('woocommerce_product_options_general_product_data', 'superkreativ_woocommerce_general_product_data_custom_fields');
 add_action('woocommerce_process_product_meta', 'superkreativ_woocommerce_process_product_meta_fields_save');
 
