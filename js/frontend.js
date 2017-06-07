@@ -34,6 +34,13 @@ jQuery(document).ready(function($){
 		location.href=$(this).val();
 	});
 	
+	// Initate styled <select> dropdowns pages
+	$(".orderby").wrap('<div class="styled-dropdown"></div>');
+	$("#billing_country").wrap('<div class="styled-dropdown"></div>');
+	$("#shipping_country").wrap('<div class="styled-dropdown"></div>');
+	$(".variations select").wrap('<div class="styled-dropdown"></div>');
+	$("select[name='archive-dropdown']").wrap('<div class="styled-dropdown"></div>');
+	
 	// Scroll to top
 	var offset = 300, offset_opacity = 1200, scroll_top_duration = 700, $back_to_top = $('#totop');
 	//hide or show the "back to top" link
