@@ -3,7 +3,7 @@
 <div class="site-info"></div>
 </footer>
 </div>
-<a href="#" rel="nofollow" id="totop"><?php echo __('Till toppen', 'superkreativ'); ?></a>
+<a href="#" rel="nofollow" id="totop"><?php echo __('Till toppen', 'wktheme'); ?></a>
 <?php wp_footer(); ?>
 </body>
 </html>
