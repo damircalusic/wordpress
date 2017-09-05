@@ -4,7 +4,7 @@ if ( !defined('ABSPATH')){ exit; }
 /**
 * Remove metaboxes on add new product in admin
 */
-function superkreativ_remove_product_metaboxes_admin() {
+function wktheme_remove_product_metaboxes_admin() {
 	remove_meta_box('postexcerpt', 'product', 'normal');
 	remove_meta_box('commentsdiv', 'product', 'normal');
 }
@@ -12,7 +12,7 @@ function superkreativ_remove_product_metaboxes_admin() {
 /**
  * Manage WooCommerce styles and scripts.
  */
-function superkreativ_woocommerce_script_cleaner() {
+function wktheme_woocommerce_script_cleaner() {
 	// Unless we're in the store, remove all the cruft!
 	if (!is_woocommerce() && !is_cart() && !is_checkout()){
 		wp_dequeue_style('woocommerce_frontend_styles'); // WooCommerce style
@@ -61,7 +61,7 @@ function superkreativ_woocommerce_script_cleaner() {
 /**
  * Define image sizes
  */
-function superkreativ_woocommerce_image_dimensions(){
+function wktheme_woocommerce_image_dimensions(){
   	$catalog = array('width' => '300', 'height' => '300', 'crop' => array('center', 'top'));
 	$single = array('width' => '1335', 'height' => '9999', 'crop' => 0);
 	$thumbnail = array('width' 	=> '80', 'height'	=> '80', 'crop' => 1);
@@ -75,13 +75,13 @@ function superkreativ_woocommerce_image_dimensions(){
 /**
 * Change currency symbols
 */
-function superkreativ_currency_symbol($currency_symbol, $currency){
+function wktheme_currency_symbol($currency_symbol, $currency){
 	global $product;
 	
-	$superkreativ_product_price_or_meter = get_post_meta($product->id, 'superkreativ_product_price_or_meter', true);
+	$wktheme_product_price_or_meter = get_post_meta($product->id, 'wktheme_product_price_or_meter', true);
 	
 	switch($currency){
-		case 'SEK': $currency_symbol = ((is_admin()) ? ($superkreativ_product_price_or_meter == 'yes') ? ' '.__('SEK/meter','superkreativ') : ' '.__('SEK/st','superkreativ') : ':-'); 
+		case 'SEK': $currency_symbol = ((is_admin()) ? ($wktheme_product_price_or_meter == 'yes') ? ' '.__('SEK/meter','wktheme') : ' '.__('SEK/st','wktheme') : ':-'); 
 		break;
 	}
 	
@@ -91,14 +91,14 @@ function superkreativ_currency_symbol($currency_symbol, $currency){
 /**
 * Function to return new placeholder image URL for WooCommerce product
 */
-function superkreativ_custom_woocommerce_placeholder($image_url){
+function wktheme_custom_woocommerce_placeholder($image_url){
 	return get_template_directory_uri().'/img/product-placeholderimage-300.jpg';
 }
 
 /*
 * Get the WooCommerce category featured image
 */
-function superkreativ_woocommerce_category_image($cat_id, $cat_name = ''){
+function wktheme_woocommerce_category_image($cat_id, $cat_name = ''){
 	$size = (empty(get_field('visning_utvald_bild', 'product_cat_'.$cat_id)) ? 'top' : get_field('visning_utvald_bild', 'product_cat_'.$cat_id));
 	$image_id = get_woocommerce_term_meta($cat_id, 'thumbnail_id', true);
 	$image = wp_get_attachment_image_src($image_id, "cover-{$size}");
@@ -113,7 +113,7 @@ function superkreativ_woocommerce_category_image($cat_id, $cat_name = ''){
 /*
 * Get all WooCommerce categories and display them in the header of the shop
 */
-function superkreativ_get_shop_categories_header(){
+function wktheme_get_shop_categories_header(){
 	$main_cats = '';
 	$sub_cats = '';
 	
@@ -133,7 +133,7 @@ function superkreativ_get_shop_categories_header(){
 		if($main->category_parent == 0) {
 			if($main->term_id != 17 && $main->term_id != 18){
 				$main_slug = get_term_link($main->slug, 'product_cat');
-				$main_class = (superkreativ_get_current_url() == $main_slug) ? 'shop-main-cat-active' : '';
+				$main_class = (wktheme_get_current_url() == $main_slug) ? 'shop-main-cat-active' : '';
 				$main_cats .= '<a class="shop-main-cat '.$main_class.'" href="'.$main_slug.'">'.$main->name.'</a>';
 			}
 			
@@ -154,7 +154,7 @@ function superkreativ_get_shop_categories_header(){
 			if($subs) {
 				foreach($subs as $sub) {
 					$sub_slug = get_term_link($sub->slug, 'product_cat');
-					$sub_class = (superkreativ_get_current_url() == $sub_slug) ? 'shop-sub-cat-active' : '';
+					$sub_class = (wktheme_get_current_url() == $sub_slug) ? 'shop-sub-cat-active' : '';
 					$sub_cats .= '<a class="shop-sub-cat '.$sub_class.'" href="'.get_term_link($sub->slug, 'product_cat').'">'.$sub->name.'</a>';
 				}   
 			}
@@ -167,12 +167,12 @@ function superkreativ_get_shop_categories_header(){
 /*
 * Get the main shop categories with related slider
 */
-function superkreativ_shop_main_categories_and_slider(){
+function wktheme_shop_main_categories_and_slider(){
 	$main_cats = '';
 	
 	// Display only IF NOT shop page
 	if(!is_shop()){
-		$desc = superkreativ_current_product_category_desc();
+		$desc = wktheme_current_product_category_desc();
 		
 		if(!empty($desc)){
 			echo '<div class="main-blog"><p>'.$desc.'</p></div>';
@@ -196,11 +196,11 @@ function superkreativ_shop_main_categories_and_slider(){
 					echo '<ul class="products main-cats">
 							<li class="product-category">
 								<figure>'.
-									superkreativ_woocommerce_category_image($main->term_id, $main->name).'
+									wktheme_woocommerce_category_image($main->term_id, $main->name).'
 									<figcaption>
 										<div>
 											<h2>'.$main->name.'</h2>
-											<a class="shop-cat-link" href="'.get_term_link($main->slug, 'product_cat').'">'.__('View all products', 'superkreativ').'</a>
+											<a class="shop-cat-link" href="'.get_term_link($main->slug, 'product_cat').'">'.__('View all products', 'wktheme').'</a>
 										</div>
 									</figcaption>
 								</figure>
@@ -235,7 +235,7 @@ function superkreativ_shop_main_categories_and_slider(){
 /*
 * Add a search products form to the shop
 */
-function superkreativ_add_woocommerce_product_search() {
+function wktheme_add_woocommerce_product_search() {
 	if(!is_shop()){
 		if(is_active_sidebar('produkt-sok')){ 
 			dynamic_sidebar('produkt-sok'); 
@@ -246,7 +246,7 @@ function superkreativ_add_woocommerce_product_search() {
 /*
 * Get all WooCommerce categories and display them in the shop except main shop page
 */
-function superkreativ_get_shop_categories(){
+function wktheme_get_shop_categories(){
 	if(!is_shop()){
 		$mains = get_categories(
 					array(
@@ -260,7 +260,7 @@ function superkreativ_get_shop_categories(){
 					)
 				);
 		
-		echo '<div id="choose_category"><div class="styled-dropdown"><select><option>'.__('Välj kategori','superkreativ').'</option>';
+		echo '<div id="choose_category"><div class="styled-dropdown"><select><option>'.__('Välj kategori','wktheme').'</option>';
 		foreach($mains as $main) {
 			if($main->category_parent == 0) {
 				$main_slug = get_term_link($main->slug, 'product_cat');
@@ -295,14 +295,14 @@ function superkreativ_get_shop_categories(){
 /*
 * Change number of columns displaying product thumbnails
 */
-function superkreativ_woocommerce_product_thumbnails_columns() {
+function wktheme_woocommerce_product_thumbnails_columns() {
 	return 4;
 }
 
 /*
 * Remove overflowed tabs from the shop
 */
-function superkreativ_remove_tabs_shop($tabs){
+function wktheme_remove_tabs_shop($tabs){
     unset($tabs['description']);
 	unset($tabs['reviews']);
 	unset($tabs['additional_information']);
@@ -313,31 +313,31 @@ function superkreativ_remove_tabs_shop($tabs){
 /*
 * Get products main description
 */
-function superkreativ_woocommerce_product_main_description() {
+function wktheme_woocommerce_product_main_description() {
 	the_content();
 }
 
 /*
 * Get products additional information
 */
-function superkreativ_woocommerce_product_additional_information() {
+function wktheme_woocommerce_product_additional_information() {
 	woocommerce_get_template('single-product/tabs/additional-information.php');
 }
 
 /**
-* Rename all text to fit superkreativ for products add_to_cart etc.
+* Rename all text to fit wktheme for products add_to_cart etc.
 */
-function superkreativ_woocommerce_product_add_to_cart_text(){
+function wktheme_woocommerce_product_add_to_cart_text(){
 	global $product;
 	
 	$product_type = $product->product_type;
 	
 	switch($product_type){
-		case 'external': return __('Buy', 'superkreativ'); break;
-		case 'grouped':return __('View products', 'superkreativ'); break;
-		case 'simple': return __('Buy', 'superkreativ'); break;
-		case 'variable': return __('Options', 'superkreativ'); break;
-		default: return __('Read more', 'superkreativ');
+		case 'external': return __('Buy', 'wktheme'); break;
+		case 'grouped':return __('View products', 'wktheme'); break;
+		case 'simple': return __('Buy', 'wktheme'); break;
+		case 'variable': return __('Options', 'wktheme'); break;
+		default: return __('Read more', 'wktheme');
 	}
 	
 }
@@ -345,23 +345,23 @@ function superkreativ_woocommerce_product_add_to_cart_text(){
 /**
 * Add extra buttons to a product in listings
 */
-function superkreativ_woocommerce_after_shop_loop_item_title(){
+function wktheme_woocommerce_after_shop_loop_item_title(){
 	global $product;
 	
-	echo '<a href="'.get_permalink($product->ID).'" class="read_more_product">'.__('Read more', 'superkreativ').'</a>';
+	echo '<a href="'.get_permalink($product->ID).'" class="read_more_product">'.__('Read more', 'wktheme').'</a>';
 }
 
 /**
 * Change products per page
 */
-function superkreativ_loop_shop_per_page(){
+function wktheme_loop_shop_per_page(){
 	return 12;
 }
 
 /**
 * Get current product category description
 */
-function superkreativ_current_product_category_desc(){
+function wktheme_current_product_category_desc(){
 	$queried_object = get_queried_object();
 	
 	return $queried_object->description;
@@ -370,14 +370,14 @@ function superkreativ_current_product_category_desc(){
 /**
 * Add Proceed to checkout button on cart.php page
 */
-function superkreativ_woocommerce_cart_actions(){
+function wktheme_woocommerce_cart_actions(){
 	do_action('woocommerce_proceed_to_checkout');
 }
 
 /** 
 * Hide shipping rates when free shipping is available 
 */
-function superkreativ_hide_shipping_when_free_is_available($rates){
+function wktheme_hide_shipping_when_free_is_available($rates){
 	$free = array();
 	
 	foreach($rates as $rate_id => $rate){
@@ -393,31 +393,31 @@ function superkreativ_hide_shipping_when_free_is_available($rates){
 /**
 * Change the display of prices of variable products to --> From: 200 instead of 200 - 1500
 */
-function superkreativ_woocommerce_variable_price_html($price_product_get_price_suffix, $product){
+function wktheme_woocommerce_variable_price_html($price_product_get_price_suffix, $product){
 	$prices = preg_match_all("/woocommerce-Price-amount/i", $price_product_get_price_suffix);
-	$superkreativ_product_price_or_meter = get_post_meta($product->id, 'superkreativ_product_price_or_meter', true);
+	$wktheme_product_price_or_meter = get_post_meta($product->id, 'wktheme_product_price_or_meter', true);
 	
 	// If is Single product or is in Administration
 	//if(is_product() || is_admin()){
-		return (($prices >= 2) ? __('Från','superkreativ').': ' : '').number_format($product->price,0,' ',' ').' '.(($superkreativ_product_price_or_meter == 'yes') ? __('SEK/meter','superkreativ') : __('SEK/st','superkreativ'));
+		return (($prices >= 2) ? __('Från','wktheme').': ' : '').number_format($product->price,0,' ',' ').' '.(($wktheme_product_price_or_meter == 'yes') ? __('SEK/meter','wktheme') : __('SEK/st','wktheme'));
 	//}
 	
-	//return ($prices >= 2) ? __('Från','superkreativ').': '.$product->price.':-' : $price_product_get_price_suffix;
+	//return ($prices >= 2) ? __('Från','wktheme').': '.$product->price.':-' : $price_product_get_price_suffix;
 }
 
 /**
 * Display custom product fields in the general tab of a single product in Admin
 */
-function superkreativ_woocommerce_general_product_data_custom_fields() {
+function wktheme_woocommerce_general_product_data_custom_fields() {
 	global $woocommerce, $post;
 	
 	echo '<div class="options_group">';
 	woocommerce_wp_checkbox(
 		array(
-			'id' => 'superkreativ_product_price_or_meter',
+			'id' => 'wktheme_product_price_or_meter',
 			'wrapper_class' => 'checkbox_class',
 			'label' => __('Säljes per meter', 'klassbols'),
-			'description' => __('Kryssa för om produkten säljs per meter', 'superkreativ')
+			'description' => __('Kryssa för om produkten säljs per meter', 'wktheme')
 		)
 	);
 	echo '</div>';
@@ -426,9 +426,9 @@ function superkreativ_woocommerce_general_product_data_custom_fields() {
 /**
 * Save all custom products fields in the Dtabase
 */
-function superkreativ_woocommerce_process_product_meta_fields_save($post_id){
-	$superkreativ_product_price_or_meter = isset($_POST['superkreativ_product_price_or_meter']) ? 'yes' : 'no';
-	update_post_meta($post_id, 'superkreativ_product_price_or_meter', $superkreativ_product_price_or_meter);
+function wktheme_woocommerce_process_product_meta_fields_save($post_id){
+	$wktheme_product_price_or_meter = isset($_POST['wktheme_product_price_or_meter']) ? 'yes' : 'no';
+	update_post_meta($post_id, 'wktheme_product_price_or_meter', $wktheme_product_price_or_meter);
 }
 
 // Remove Actions
@@ -438,27 +438,27 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 
 // Add Actions
-add_action('add_meta_boxes', 'superkreativ_remove_product_metaboxes_admin', 999);
-add_action('init', 'superkreativ_woocommerce_image_dimensions', 1);
-add_action('wp_enqueue_scripts', 'superkreativ_woocommerce_script_cleaner', 99);
-add_action('woocommerce_after_shop_loop', 'superkreativ_shop_main_categories_and_slider');
-add_action('woocommerce_after_shop_loop_item','superkreativ_woocommerce_after_shop_loop_item_title');
+add_action('add_meta_boxes', 'wktheme_remove_product_metaboxes_admin', 999);
+add_action('init', 'wktheme_woocommerce_image_dimensions', 1);
+add_action('wp_enqueue_scripts', 'wktheme_woocommerce_script_cleaner', 99);
+add_action('woocommerce_after_shop_loop', 'wktheme_shop_main_categories_and_slider');
+add_action('woocommerce_after_shop_loop_item','wktheme_woocommerce_after_shop_loop_item_title');
 add_action('woocommerce_before_single_product_summary', 'wc_print_notices', 0);
-add_action('woocommerce_single_product_summary', 'superkreativ_woocommerce_product_additional_information', 45);
-add_action('woocommerce_single_product_summary', 'superkreativ_woocommerce_product_main_description', 60);
-add_action('woocommerce_cart_actions', 'superkreativ_woocommerce_cart_actions');
-add_action('woocommerce_before_shop_loop', 'superkreativ_add_woocommerce_product_search', 40);
-add_action('woocommerce_before_shop_loop', 'superkreativ_get_shop_categories', 40);
-add_action('woocommerce_product_options_general_product_data', 'superkreativ_woocommerce_general_product_data_custom_fields');
-add_action('woocommerce_process_product_meta', 'superkreativ_woocommerce_process_product_meta_fields_save');
+add_action('woocommerce_single_product_summary', 'wktheme_woocommerce_product_additional_information', 45);
+add_action('woocommerce_single_product_summary', 'wktheme_woocommerce_product_main_description', 60);
+add_action('woocommerce_cart_actions', 'wktheme_woocommerce_cart_actions');
+add_action('woocommerce_before_shop_loop', 'wktheme_add_woocommerce_product_search', 40);
+add_action('woocommerce_before_shop_loop', 'wktheme_get_shop_categories', 40);
+add_action('woocommerce_product_options_general_product_data', 'wktheme_woocommerce_general_product_data_custom_fields');
+add_action('woocommerce_process_product_meta', 'wktheme_woocommerce_process_product_meta_fields_save');
 
 // Add Filters
-add_filter('woocommerce_currency_symbol', 'superkreativ_currency_symbol', 10, 2);
-add_filter('woocommerce_placeholder_img_src', 'superkreativ_custom_woocommerce_placeholder', 10);
-add_filter('woocommerce_product_tabs', 'superkreativ_remove_tabs_shop', 98);
-add_filter('woocommerce_product_add_to_cart_text', 'superkreativ_woocommerce_product_add_to_cart_text');
-add_filter('woocommerce_product_thumbnails_columns', 'superkreativ_woocommerce_product_thumbnails_columns');
-add_filter('woocommerce_package_rates', 'superkreativ_hide_shipping_when_free_is_available', 0);
-add_filter('loop_shop_per_page', 'superkreativ_loop_shop_per_page', 20);
+add_filter('woocommerce_currency_symbol', 'wktheme_currency_symbol', 10, 2);
+add_filter('woocommerce_placeholder_img_src', 'wktheme_custom_woocommerce_placeholder', 10);
+add_filter('woocommerce_product_tabs', 'wktheme_remove_tabs_shop', 98);
+add_filter('woocommerce_product_add_to_cart_text', 'wktheme_woocommerce_product_add_to_cart_text');
+add_filter('woocommerce_product_thumbnails_columns', 'wktheme_woocommerce_product_thumbnails_columns');
+add_filter('woocommerce_package_rates', 'wktheme_hide_shipping_when_free_is_available', 0);
+add_filter('loop_shop_per_page', 'wktheme_loop_shop_per_page', 20);
 add_filter('woocommerce_price_trim_zeros', '__return_true');
-add_filter('woocommerce_variable_price_html', 'superkreativ_woocommerce_variable_price_html', 10, 2);
+add_filter('woocommerce_variable_price_html', 'wktheme_woocommerce_variable_price_html', 10, 2);
