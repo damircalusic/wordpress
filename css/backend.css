@@ -10,7 +10,7 @@ body.swal2-shown{overflow-y:hidden}body.swal2-iosfix{position:fixed;left:0;right
 #cpt-desc-form p{
 	max-width:300px;
 }
-#wktheme-cpt-title, #superkreativ-cpt-description{
+#wktheme-cpt-title, #wktheme-cpt-description{
 	width:300px;
 }
 #wktheme-cpt-description{
