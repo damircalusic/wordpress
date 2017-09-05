@@ -4,23 +4,23 @@ if ( !defined('ABSPATH')){ exit; }
 /**
  * Employees CPT
  */
-function superkreativ_create_personal()
+function wktheme_create_personal()
 {
 	register_post_type('personal',
         array(
         'labels' => array(
-            'name' => __('Anställda', 'superkreativ'),
-            'singular_name' => __('Anställd', 'superkreativ'),
-            'add_new' => __('Lägg till ny', 'superkreativ'),
-            'add_new_item' => __('Lägg till ny anställd', 'superkreativ'),
-            'edit' => __('Redigera', 'superkreativ'),
-            'edit_item' => __('Redigera anställd', 'superkreativ'),
-            'new_item' => __('Ny anställd', 'superkreativ'),
-            'view' => __('Visa', 'superkreativ'),
-            'view_item' => __('Visa anställd', 'superkreativ'),
-            'search_items' => __('Sök anställd', 'superkreativ'),
-            'not_found' => __('Inga anställda', 'superkreativ'),
-            'not_found_in_trash' => __('Inga anställda in trash', 'superkreativ')
+            'name' => __('Anställda', 'wktheme'),
+            'singular_name' => __('Anställd', 'wktheme'),
+            'add_new' => __('Lägg till ny', 'wktheme'),
+            'add_new_item' => __('Lägg till ny anställd', 'wktheme'),
+            'edit' => __('Redigera', 'wktheme'),
+            'edit_item' => __('Redigera anställd', 'wktheme'),
+            'new_item' => __('Ny anställd', 'wktheme'),
+            'view' => __('Visa', 'wktheme'),
+            'view_item' => __('Visa anställd', 'wktheme'),
+            'search_items' => __('Sök anställd', 'wktheme'),
+            'not_found' => __('Inga anställda', 'wktheme'),
+            'not_found_in_trash' => __('Inga anställda in trash', 'wktheme')
         ),
 		'menu_position' => 71,
         'public' => true,
@@ -44,23 +44,23 @@ function superkreativ_create_personal()
 /**
  * Retailers CPT
  */
-function superkreativ_create_aterforsaljare()
+function wktheme_create_aterforsaljare()
 {
 	register_post_type('aterforsaljare',
         array(
         'labels' => array(
-            'name' => __('Återförsäljare', 'superkreativ'),
-            'singular_name' => __('Återförsäljare', 'superkreativ'),
-            'add_new' => __('Lägg till ny', 'superkreativ'),
-            'add_new_item' => __('Lägg till ny återförsäljare', 'superkreativ'),
-            'edit' => __('Redigera', 'superkreativ'),
-            'edit_item' => __('Redigera återförsäljare', 'superkreativ'),
-            'new_item' => __('Ny återförsäljare', 'superkreativ'),
-            'view' => __('Visa', 'superkreativ'),
-            'view_item' => __('Visa återförsäljare', 'superkreativ'),
-            'search_items' => __('Sök återförsäljare', 'superkreativ'),
-            'not_found' => __('Inga återförsäljare', 'superkreativ'),
-            'not_found_in_trash' => __('Inga återförsäljare in trash', 'superkreativ')
+            'name' => __('Återförsäljare', 'wktheme'),
+            'singular_name' => __('Återförsäljare', 'wktheme'),
+            'add_new' => __('Lägg till ny', 'wktheme'),
+            'add_new_item' => __('Lägg till ny återförsäljare', 'wktheme'),
+            'edit' => __('Redigera', 'wktheme'),
+            'edit_item' => __('Redigera återförsäljare', 'wktheme'),
+            'new_item' => __('Ny återförsäljare', 'wktheme'),
+            'view' => __('Visa', 'wktheme'),
+            'view_item' => __('Visa återförsäljare', 'wktheme'),
+            'search_items' => __('Sök återförsäljare', 'wktheme'),
+            'not_found' => __('Inga återförsäljare', 'wktheme'),
+            'not_found_in_trash' => __('Inga återförsäljare in trash', 'wktheme')
         ),
 		'menu_position' => 73,
         'public' => true,
@@ -84,23 +84,23 @@ function superkreativ_create_aterforsaljare()
 /**
  * Products CPT
  */
-function superkreativ_create_produkter()
+function wktheme_create_produkter()
 {
 	register_post_type('produkter',
         array(
         'labels' => array(
-            'name' => __('Produkter', 'superkreativ'),
-            'singular_name' => __('Produkt', 'superkreativ'),
-            'add_new' => __('Lägg till ny', 'superkreativ'),
-            'add_new_item' => __('Lägg till ny produkt', 'superkreativ'),
-            'edit' => __('Redigera', 'superkreativ'),
-            'edit_item' => __('Redigera produkt', 'superkreativ'),
-            'new_item' => __('Ny produkt', 'superkreativ'),
-            'view' => __('Visa', 'superkreativ'),
-            'view_item' => __('Visa produkt', 'superkreativ'),
-            'search_items' => __('Sök produkt', 'superkreativ'),
-            'not_found' => __('Inga produkt', 'superkreativ'),
-            'not_found_in_trash' => __('Inga produkter i papperskorgen', 'superkreativ')
+            'name' => __('Produkter', 'wktheme'),
+            'singular_name' => __('Produkt', 'wktheme'),
+            'add_new' => __('Lägg till ny', 'wktheme'),
+            'add_new_item' => __('Lägg till ny produkt', 'wktheme'),
+            'edit' => __('Redigera', 'wktheme'),
+            'edit_item' => __('Redigera produkt', 'wktheme'),
+            'new_item' => __('Ny produkt', 'wktheme'),
+            'view' => __('Visa', 'wktheme'),
+            'view_item' => __('Visa produkt', 'wktheme'),
+            'search_items' => __('Sök produkt', 'wktheme'),
+            'not_found' => __('Inga produkt', 'wktheme'),
+            'not_found_in_trash' => __('Inga produkter i papperskorgen', 'wktheme')
         ),
 		'menu_position' => 21,
         'public' => true,
@@ -124,7 +124,7 @@ function superkreativ_create_produkter()
 /**
  * Products taxonomies
  */
-function superkreativ_create_produkter_tax()
+function wktheme_create_produkter_tax()
 {
 	register_taxonomy(
 		'produkter-kategori', 
@@ -133,17 +133,17 @@ function superkreativ_create_produkter_tax()
 			'hierarchical' => true,
         	'has_archive' => true,
 			'labels' => array(
-				'name' => __('Kategorier', 'superkreativ'),
-				'singular_name' => __('Kategori', 'superkreativ'),
-				'search_items' => __('Sök kategorier', 'superkreativ'),
-				'all_items' => __('Alla kategorier', 'superkreativ'),
-				'parent_item' => __('Kategori', 'superkreativ'),
-				'parent_item_colon' => __('Kategori:', 'superkreativ'),
-				'edit_item' => __('Redigera kategori', 'superkreativ'),
-				'update_item' => __('Uppdatera kategori', 'superkreativ'),
-				'add_new_item' => __('Skapa ny kategori', 'superkreativ'),
-				'new_item_name' => __('Nytt kategori namn', 'superkreativ'),
-				'menu_name' => __('Kategori', 'superkreativ'),
+				'name' => __('Kategorier', 'wktheme'),
+				'singular_name' => __('Kategori', 'wktheme'),
+				'search_items' => __('Sök kategorier', 'wktheme'),
+				'all_items' => __('Alla kategorier', 'wktheme'),
+				'parent_item' => __('Kategori', 'wktheme'),
+				'parent_item_colon' => __('Kategori:', 'wktheme'),
+				'edit_item' => __('Redigera kategori', 'wktheme'),
+				'update_item' => __('Uppdatera kategori', 'wktheme'),
+				'add_new_item' => __('Skapa ny kategori', 'wktheme'),
+				'new_item_name' => __('Nytt kategori namn', 'wktheme'),
+				'menu_name' => __('Kategori', 'wktheme'),
 			),
 			'public' => true,
 			'show_ui' => true,
@@ -159,7 +159,7 @@ function superkreativ_create_produkter_tax()
 /*
 * Add possibilty to add CPT title and description
 */
-function superkreativ_post_types_description(){
+function wktheme_post_types_description(){
     $screen = get_current_screen();
     $screens = array('edit-sposttypename');
 	
@@ -169,11 +169,11 @@ function superkreativ_post_types_description(){
 		
 		echo '<div class="updated">
 				<form id="cpt-desc-form" method="post">
-					<h2>'.__('Innehåll på sidan','superkreativ').'</h2>
-					<p><input id="superkreativ-cpt-title" name="superkreativ-cpt-title" type="text" placeholder="'.__('Lägg till rubrik','superkreativ').'" value="'.(empty($title) ? '' : $title).'"></p>
-					<p><textarea id="superkreativ-cpt-description" name="superkreativ-cpt-description" placeholder="'.__('Lägg till besrivning','superkreativ').'">'.(empty($description) ? '' : $description).'</textarea></p>
-					<p><a id="superkreativ-cpt-desc-save" class="button button-primary button-large">'.__('Spara', 'superkreativ').'</a></p>
-					<input type="hidden" id="superkreativ-cpt-desc-id" value="'.$screen->post_type.'">
+					<h2>'.__('Innehåll på sidan','wktheme').'</h2>
+					<p><input id="wktheme-cpt-title" name="wktheme-cpt-title" type="text" placeholder="'.__('Lägg till rubrik','wktheme').'" value="'.(empty($title) ? '' : $title).'"></p>
+					<p><textarea id="wktheme-cpt-description" name="wktheme-cpt-description" placeholder="'.__('Lägg till besrivning','wktheme').'">'.(empty($description) ? '' : $description).'</textarea></p>
+					<p><a id="wktheme-cpt-desc-save" class="button button-primary button-large">'.__('Spara', 'wktheme').'</a></p>
+					<input type="hidden" id="wktheme-cpt-desc-id" value="'.$screen->post_type.'">
 				</form>
 			  </div>';	
 	}
@@ -182,14 +182,14 @@ function superkreativ_post_types_description(){
 /*
 * Save CPT custom title and description
 */
-function superkreativ_save_cpt_desc(){
+function wktheme_save_cpt_desc(){
 	$id = empty($_POST['id']) ? '' : $_POST['id'];
 	$title = empty($_POST['title']) ? '' : $_POST['title'];
 	$description = empty($_POST['description']) ? '' : $_POST['description'];
 	
 	if($id !== '' && $title !== '' && $description !== ''){
-		update_option('superkreativ_cpt_title-'.$id, $title);
-		update_option('superkreativ_cpt_description-'.$id, $description);
+		update_option('wktheme_cpt_title-'.$id, $title);
+		update_option('wktheme_cpt_description-'.$id, $description);
 	}
 	
 	die();
@@ -198,7 +198,7 @@ function superkreativ_save_cpt_desc(){
 /*
 * Display custom post type archive description with Yoast SEO
 */
-function superkreativ_post_type_archive_seo_description($seo_desc){
+function wktheme_post_type_archive_seo_description($seo_desc){
 	$post_type = get_post_type();
 	$post_types = get_post_types(
 			array(
@@ -208,7 +208,7 @@ function superkreativ_post_type_archive_seo_description($seo_desc){
 		  );
 	
 	if(in_array($post_type, $post_types)){
-		$description = get_option('superkreativ_cpt_description-'.$post_type);
+		$description = get_option('wktheme_cpt_description-'.$post_type);
 		
 		if($description){
 			$seo_desc = preg_replace('/\r?\n|\r/','',substr(strip_tags($description), 0, 150));
@@ -221,7 +221,7 @@ function superkreativ_post_type_archive_seo_description($seo_desc){
 /*
 * Set posts per page for CPT's
 */
-function superkreativ_set_posts_per_page_cpts($query){
+function wktheme_set_posts_per_page_cpts($query){
   if(!is_admin() && $query->is_main_query() && is_post_type_archive('posttypename')){
     $query->set('posts_per_page', '9');
 		$query->set('orderby', 'ID');
@@ -229,7 +229,7 @@ function superkreativ_set_posts_per_page_cpts($query){
 	}
 }
 
-function superkreativ_post_uppdated_messages($messages){
+function wktheme_post_uppdated_messages($messages){
 	global $post;
 	
 	$post_type = get_post_type($post->ID);
@@ -238,61 +238,61 @@ function superkreativ_post_uppdated_messages($messages){
 	// Employees messages
 	$messages['personal'] = array(
 		0  => '',
-		1  => __('Anställd uppdaterad.', 'superkreativ'),
-		2  => __('Anställd uppdaterad.', 'superkreativ'),
-		3  => __('Anställd raderad.', 'superkreativ'),
-		4  => __('Anställd uppdaterad.', 'superkreativ'),
-		5  => isset($_GET['revision']) ? sprintf(__('Anställd återställd från revision %s', 'superkreativ'), wp_post_revision_title((int)$_GET['revision'], false)) : false,
-		6  => __('Anställd publicerad.', 'superkreativ'),
-		7  => __('Anställd sparad.', 'superkreativ'),
-		8  => __('Anställd inskickad.', 'superkreativ'),
-		9  => sprintf(__('Anställd tidsinställd för: <strong>%1$s</strong>.', 'superkreativ'), date_i18n(__('M j, Y @ G:i', 'superkreativ'), strtotime($post->post_date))),
-		10 => __('Anställd utkast updaterad.', 'superkreativ')
+		1  => __('Anställd uppdaterad.', 'wktheme'),
+		2  => __('Anställd uppdaterad.', 'wktheme'),
+		3  => __('Anställd raderad.', 'wktheme'),
+		4  => __('Anställd uppdaterad.', 'wktheme'),
+		5  => isset($_GET['revision']) ? sprintf(__('Anställd återställd från revision %s', 'wktheme'), wp_post_revision_title((int)$_GET['revision'], false)) : false,
+		6  => __('Anställd publicerad.', 'wktheme'),
+		7  => __('Anställd sparad.', 'wktheme'),
+		8  => __('Anställd inskickad.', 'wktheme'),
+		9  => sprintf(__('Anställd tidsinställd för: <strong>%1$s</strong>.', 'wktheme'), date_i18n(__('M j, Y @ G:i', 'wktheme'), strtotime($post->post_date))),
+		10 => __('Anställd utkast updaterad.', 'wktheme')
 	);
 	
 	// Retailers messages
 	$messages['aterforsaljare'] = array(
 		0  => '',
-		1  => __('Återförsäljare uppdaterad.', 'superkreativ'),
-		2  => __('Återförsäljare uppdaterad.', 'superkreativ'),
-		3  => __('Återförsäljare raderad.', 'superkreativ'),
-		4  => __('Återförsäljare uppdaterad.', 'superkreativ'),
-		5  => isset($_GET['revision']) ? sprintf(__('Återförsäljare återställd till revision %s', 'superkreativ'), wp_post_revision_title((int)$_GET['revision'], false)) : false,
-		6  => __('Återförsäljare publicerad.', 'superkreativ'),
-		7  => __('Återförsäljare sparad.', 'superkreativ'),
-		8  => __('Återförsäljare inskickad.', 'superkreativ'),
-		9  => sprintf(__('Återförsäljare tidsinställd för: <strong>%1$s</strong>.', 'superkreativ'), date_i18n(__('M j, Y @ G:i', 'superkreativ'), strtotime($post->post_date))),
-		10 => __('Återförsäljare utkast uppdaterad.', 'superkreativ')
+		1  => __('Återförsäljare uppdaterad.', 'wktheme'),
+		2  => __('Återförsäljare uppdaterad.', 'wktheme'),
+		3  => __('Återförsäljare raderad.', 'wktheme'),
+		4  => __('Återförsäljare uppdaterad.', 'wktheme'),
+		5  => isset($_GET['revision']) ? sprintf(__('Återförsäljare återställd till revision %s', 'wktheme'), wp_post_revision_title((int)$_GET['revision'], false)) : false,
+		6  => __('Återförsäljare publicerad.', 'wktheme'),
+		7  => __('Återförsäljare sparad.', 'wktheme'),
+		8  => __('Återförsäljare inskickad.', 'wktheme'),
+		9  => sprintf(__('Återförsäljare tidsinställd för: <strong>%1$s</strong>.', 'wktheme'), date_i18n(__('M j, Y @ G:i', 'wktheme'), strtotime($post->post_date))),
+		10 => __('Återförsäljare utkast uppdaterad.', 'wktheme')
 	);
 	
 	// Products messages
 	$messages['produkter'] = array(
 		0  => '',
-		1  => __('Produkt uppdaterad.', 'superkreativ'),
-		2  => __('Produkt uppdaterad.', 'superkreativ'),
-		3  => __('Produkt raderad.', 'superkreativ'),
-		4  => __('Produkt uppdaterad.', 'superkreativ'),
-		5  => isset($_GET['revision']) ? sprintf(__('Produkt återställd från revision %s', 'superkreativ'), wp_post_revision_title((int)$_GET['revision'], false)) : false,
-		6  => __('Produkt publicerad.', 'superkreativ'),
-		7  => __('Produkt sparad.', 'superkreativ'),
-		8  => __('Produkt inskickad.', 'superkreativ'),
-		9  => sprintf(__('Produkt tidsinställd för: <strong>%1$s</strong>.', 'superkreativ'), date_i18n(__('M j, Y @ G:i', 'superkreativ'), strtotime($post->post_date))),
-		10 => __('Produkt utkast updaterad.', 'superkreativ')
+		1  => __('Produkt uppdaterad.', 'wktheme'),
+		2  => __('Produkt uppdaterad.', 'wktheme'),
+		3  => __('Produkt raderad.', 'wktheme'),
+		4  => __('Produkt uppdaterad.', 'wktheme'),
+		5  => isset($_GET['revision']) ? sprintf(__('Produkt återställd från revision %s', 'wktheme'), wp_post_revision_title((int)$_GET['revision'], false)) : false,
+		6  => __('Produkt publicerad.', 'wktheme'),
+		7  => __('Produkt sparad.', 'wktheme'),
+		8  => __('Produkt inskickad.', 'wktheme'),
+		9  => sprintf(__('Produkt tidsinställd för: <strong>%1$s</strong>.', 'wktheme'), date_i18n(__('M j, Y @ G:i', 'wktheme'), strtotime($post->post_date))),
+		10 => __('Produkt utkast updaterad.', 'wktheme')
 	);
 
 	return $messages;
 }
 
 // Add Actions
-add_action('init', 'superkreativ_create_personal');
-add_action('init', 'superkreativ_create_aterforsaljare');
-add_action('init', 'superkreativ_create_produkter');
-add_action('init', 'superkreativ_create_produkter_tax');
-add_action('pre_get_posts', 'superkreativ_set_posts_per_page_cpts');
-add_action('admin_notices','superkreativ_post_types_description');
-add_action('wp_ajax_superkreativ_save_cpt_desc', 'superkreativ_save_cpt_desc');
-add_action('wp_ajax_nopriv_superkreativ_save_cpt_desc', 'superkreativ_save_cpt_desc');
+add_action('init', 'wktheme_create_personal');
+add_action('init', 'wktheme_create_aterforsaljare');
+add_action('init', 'wktheme_create_produkter');
+add_action('init', 'wktheme_create_produkter_tax');
+add_action('pre_get_posts', 'wktheme_set_posts_per_page_cpts');
+add_action('admin_notices','wktheme_post_types_description');
+add_action('wp_ajax_wktheme_save_cpt_desc', 'wktheme_save_cpt_desc');
+add_action('wp_ajax_nopriv_wktheme_save_cpt_desc', 'wktheme_save_cpt_desc');
 
 // Add Filters
-add_filter('post_updated_messages', 'superkreativ_post_uppdated_messages');
-add_filter('wpseo_metadesc', 'superkreativ_post_type_archive_seo_description', 10, 1);
+add_filter('post_updated_messages', 'wktheme_post_uppdated_messages');
+add_filter('wpseo_metadesc', 'wktheme_post_type_archive_seo_description', 10, 1);
