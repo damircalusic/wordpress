@@ -162,6 +162,19 @@ function wktheme_add_dashboard_widgets(){
 * Add To Do widget on WordPress Panel
 */
 function wktheme_to_do_function(){
+	// Get Free space on DISK
+	$disk_free_space_bytes = disk_free_space(".");
+	$disk_total_space_bytes = disk_total_space("."); 
+    	$symbols = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+	$base = 1024;
+    	$class_disk_free_space = min((int)log($disk_free_space_bytes, $base), count($symbols) - 1);
+	$class_disk_total_space = min((int)log($disk_total_space_bytes, $base), count($symbols) - 1);
+	$free_space = sprintf('%1.2f' , $disk_free_space_bytes / pow($base,$class_disk_free_space)).' '.$symbols[$class_disk_free_space];
+	$total_space = sprintf('%1.2f' , $disk_total_space_bytes / pow($base,$class_disk_total_space)).' '.$symbols[$class_disk_total_space];
+	
+	echo '<p><strong>'.__('Ledigt utrymme på servern', 'wktheme').':</strong> '.$free_space.'<br><strong>'.__('Använt utrymme på servern', 'wktheme').':</strong> '.($total_space - $free_space).' / '.$total_space.'</p>';
+  
+	// Get Optimized Images
 	$imgargs = array(
 					'post_type' => 'attachment',
 					'post_mime_type' => array('image/jpeg', 'image/jpg', 'image/png', 'image/gif'),
@@ -200,7 +213,8 @@ function wktheme_to_do_function(){
 			}
 		}
 	
-		echo '<p>
+		echo'<hr>
+			  <p>
 				 <strong>'.__('Antal optimerade bilder', 'wktheme').':</strong> <span>'.$imgcounter.'<span> / <span>'.$imgtotal.'</span><br>'.
 				 (empty($imgoptimized) ? __('Allt optimerat','wktheme') : '<strong>'.__('Antal ej optimerade bilder','wktheme').':</strong> '.($imgtotal - $imgcounter)).' 
 			  </p>'.
