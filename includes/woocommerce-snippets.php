@@ -431,6 +431,26 @@ function wktheme_woocommerce_process_product_meta_fields_save($post_id){
 	update_post_meta($post_id, 'wktheme_product_price_or_meter', $wktheme_product_price_or_meter);
 }
 
+/**
+ * Output external product add to cart button on product archives, shortcodes etc.
+ */ 
+function wktheme_external_add_product_link_target_blank($link){
+    global $product;
+	
+	if($product->is_type('external')){ 
+		$link = sprintf( '<a rel="nofollow" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s" class="%s" target="_blank" rel="nofollow noopener">%s</a>', 
+			esc_url( $product->add_to_cart_url() ),
+			esc_attr( isset( $quantity ) ? $quantity : 1 ),
+			esc_attr( $product->id ),
+			esc_attr( $product->get_sku() ),
+			esc_attr( isset( $class ) ? $class : 'button product_type_external' ),
+			esc_html( $product->add_to_cart_text() )
+		);
+    }
+
+    return $link;
+}
+
 // Remove Actions
 remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
 remove_action('woocommerce_before_single_product', 'wc_print_notices');
@@ -462,3 +482,4 @@ add_filter('woocommerce_package_rates', 'wktheme_hide_shipping_when_free_is_avai
 add_filter('loop_shop_per_page', 'wktheme_loop_shop_per_page', 20);
 add_filter('woocommerce_price_trim_zeros', '__return_true');
 add_filter('woocommerce_variable_price_html', 'wktheme_woocommerce_variable_price_html', 10, 2);
+add_filter('woocommerce_loop_add_to_cart_link', 'wktheme_external_add_product_link_target_blank', 10, 2);
