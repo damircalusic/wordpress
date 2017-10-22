@@ -16,10 +16,10 @@
 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 <meta name="msapplication-config" content="/browserconfig.xml" />
 <meta name="theme-color" content="#ffffff">
-<meta name="geo.region" content="SE">
-<meta name="geo.placename" content="Arvika">
-<meta name="geo.position" content="59.665514;12.57853">
-<meta name="ICBM" content="59.665514, 12.57853">
+<meta name="geo.region" content="<?php echo get_option('wktheme_theme_geo_country_code'); ?>">
+<meta name="geo.placename" content="<?php echo get_option('wktheme_theme_geo_city'); ?>">
+<meta name="geo.position" content="<?php echo get_option('wktheme_theme_geo_latitude').';'.get_option('wktheme_theme_geo_longitude'); ?>">
+<meta name="ICBM" content="<?php echo get_option('wktheme_theme_geo_latitude').', '.get_option('wktheme_theme_geo_longitude'); ?>">
 <meta name="DC.coverage" content="Sverige" />
 <meta name="DC.publisher" content="<?php bloginfo('sitename'); ?>" />
 <meta name="DC.creator" content="<?php bloginfo('sitename'); ?>" />
@@ -52,9 +52,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,600" media="not all" onload="if(media!='all')media='all'">
 <link rel="stylesheet" href="/wp-includes/css/dashicons.min.css" media="not all" onload="if(media!='all')media='all'">
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.css">
 <?php wp_head(); ?>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
