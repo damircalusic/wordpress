@@ -20,10 +20,12 @@
 <meta name="geo.placename" content="Arvika">
 <meta name="geo.position" content="59.665514;12.57853">
 <meta name="ICBM" content="59.665514, 12.57853">
-<meta name="DC.creator" content="<?php bloginfo('sitename'); ?>" />
-<meta name="DC.publisher" content="<?php bloginfo('sitename'); ?>" />
-<meta name="DC.title" content="<?php bloginfo('sitename'); ?>" />
 <meta name="DC.coverage" content="Sverige" />
+<meta name="DC.publisher" content="<?php bloginfo('sitename'); ?>" />
+<meta name="DC.creator" content="<?php bloginfo('sitename'); ?>" />
+<meta name="DC.title" content="<?php bloginfo('sitename'); ?>" />
+<meta name="DC.identifier" content="<?php echo get_home_url(); ?>" />
+<meta name="DC.language" scheme="RFC1766" content="<?php echo get_locale(); ?>" />
 <meta name="DC.type" content="Text" />
 <meta name="DC.format" content="text/html" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
