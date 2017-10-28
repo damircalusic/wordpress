@@ -552,6 +552,32 @@ function wktheme_woocommerce_email_customer_details($order, $sent_to_admin, $pla
 	return __('Personal number', 'wktheme').': '.get_post_meta($order->id, '_billing_pnr', true);
 }
 
+
+/** 
+* Choose which shipping rates to be visible when free shipping is available
+*/
+function wktheme_choose_shipping_methods_on_free_shipping($rates){
+	$rates_array = array();
+    $true = '';
+	
+	foreach($rates as $rate_id => $rate){
+        if('free_shipping' === $rate->method_id){
+			$rates_array[$rate_id] = $rate;
+			
+			$true = 'true';
+        }
+		
+		if($true == 'true'){
+			if('legacy_local_pickup' === $rate->method_id){
+				$rates_array[$rate_id] = $rate;
+			}
+		}
+    }
+ 
+    return empty($rates_array) ? $rates : $rates_array;
+}
+add_filter('woocommerce_package_rates', 'wktheme_choose_shipping_methods_on_free_shipping', 0);
+
 // Remove Actions
 remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
 remove_action('woocommerce_before_single_product', 'wc_print_notices');
