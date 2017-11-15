@@ -360,7 +360,7 @@ function wktheme_get_taxonomi_slug(){
 */
 function wktheme_get_taxonomi_desc(){
 	$queried_object = get_queried_object();
-	$term_desc = (empty($queried_object->description) ? '' : '<p id="tax-description">'.$queried_object->description.'</p>');
+	$term_desc = (empty($queried_object->description) ? '' : '<p id="tax-first-p">'.preg_replace('/\n/', '<br>', preg_replace('/\n(\s*\n)+/', '</p><p>', $queried_object->description)).'</p>');
 	
 	return $term_desc;
 }
