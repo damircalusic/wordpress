@@ -344,7 +344,15 @@ function wktheme_get_taxonomi_name(){
 	
 	return $term_name;
 }
-
+/*
+* Get current Taxonomy Label
+*/
+function wktheme_get_taxonomi_label(){
+	$queried_object = get_queried_object();
+	$term_label = (empty($queried_object->label) ? '' : $queried_object->label);
+    
+	return $term_label;
+}
 /*
 * Get current Taxonomy Slug
 */
