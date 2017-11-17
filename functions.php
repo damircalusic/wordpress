@@ -88,7 +88,18 @@ function wktheme_scripts() {
  */
 function wktheme_backend_scripts() {
 	echo "<link type='text/css' rel='stylesheet' href='".get_stylesheet_directory_uri()."/css/backend.css' />\n";
-	echo "<script src='".get_stylesheet_directory_uri()."/js/backend.js'></script>\n";
+	
+	wp_register_script('wktheme-backend-js', get_stylesheet_directory_uri() . '/js/backend.js', '', '', true);
+	wp_enqueue_script('wktheme-backend-js');
+
+	// localize the backend script with new data
+	$loc_data = array(
+		'sorry' => __('Sorry','wktheme'),
+		'success' => __('Success','bonestheme'),
+		'sorry_text' => __('You need to enter all fields, please!','bonestheme'),
+		'success_text' => __('Awesome, everything went just fine!','bonestheme'),
+	);
+	wp_localize_script('wktheme-backend-js', 'loc', $loc_data);
 }
 
 /**
