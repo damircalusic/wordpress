@@ -95,9 +95,9 @@ function wktheme_backend_scripts() {
 	// localize the backend script with new data
 	$loc_data = array(
 		'sorry' => __('Sorry','wktheme'),
-		'success' => __('Success','bonestheme'),
-		'sorry_text' => __('You need to enter all fields, please!','bonestheme'),
-		'success_text' => __('Awesome, everything went just fine!','bonestheme'),
+		'success' => __('Success','wktheme'),
+		'sorry_text' => __('You need to enter all fields, please!','wktheme'),
+		'success_text' => __('Awesome, everything went just fine!','wktheme'),
 	);
 	wp_localize_script('wktheme-backend-js', 'loc', $loc_data);
 }
