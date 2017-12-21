@@ -285,6 +285,11 @@ function wktheme_modify_embed_defaults() {
 * Make Videos responsive and remove unwanted attributes
 */
 function wktheme_modify_embed_html( $html ) {
+    // If Facebook return;
+    if(strstr($html, 'fb-root')){
+      return $html;
+    }
+	
     return '<div class="video-container">'.str_replace(' allowfullscreen','',str_replace(' frameborder="0"','',$html)).'</div>';
 }
 
