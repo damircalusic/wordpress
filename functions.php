@@ -53,8 +53,10 @@ function wktheme_login_logo_url_title() {
 function wktheme_widgets_init() {
 	global $wp_widget_factory;
 	
-	remove_action('wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
-	
+	if(array_key_exists('WP_Widget_Recent_Comments', $wp_widget_factory->widgets)){
+		remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
+	}
+		
 	require(get_template_directory().'/inc/widgets.php');
 	require(get_template_directory().'/inc/sidebars.php');
 }
