@@ -119,15 +119,14 @@ function wktheme_remove_script_tag($tag){
 }
 
 /**
- * Remove ? query strings after styles and scripts adn ensure that the URL starts with right protocol
+ * Remove ? query strings after styles and scripts (SEO purpose)
  */
 function wktheme_remove_script_version($src){
-	$url = "http";
-	$url .= (@$_SERVER["HTTPS"] == "on") ? 's://' : '://';
-	$base = explode('//', $src);
-	$query = explode('?', $base[1]);
+	if(strpos($src, 'ver=')){
+		$src = remove_query_arg('ver', $src);
+	}
 	
-	return (!empty($src) && !empty($base)) ? $url.(($query[0] == 'fonts.googleapis.com/css') ? $query[0].'?'.$query[1] : $query[0]) : $src;
+	return $src;
 }
 
 /**
